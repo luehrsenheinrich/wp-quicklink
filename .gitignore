@@ -1,0 +1,46 @@
+node_modules
+.svn
+docker/wp
+GITHUB_TOKEN
+wpcs
+trunk
+update
+
+# Ignore OS X .DS_Store files
+.DS_Store
+/vendor/
+.env
+
+!/wpcs/**/*
+!/wpcs/vendor/**/*
+/wpcs/**/.DS_Store
+
+# Remove files that are generated during deploy
+
+## CSS
+**/*.min.css
+build/style.css
+build/admin/admin.css
+build/css/font-awesome.css
+build/blocks/blocks-editor.css
+build/blocks/blocks.css
+build/blocks-professional/blocks-editor.css
+build/blocks-professional/blocks.css
+build/webfonts.css
+build/css/filter.css
+build/theme-compatibility/**/*.css
+
+## JS
+build/js/script.min.js
+build/js/script.bundle.js
+build/js/fonts.min.js
+build/js/fonts.bundle.js
+build/blocks/blocks.min.js
+build/blocks/blocks.bundle.js
+build/admin/customizer.min.js
+build/admin/customizer.bundle.js
+build/admin/admin.min.js
+build/admin/admin.bundle.js
+build/blocks-professional/blocks.min.js
+build/blocks/blocks-frontend.min.js
+build/blocks-professional/blocks-frontend.min.js

@@ -1,0 +1,134 @@
+.wp-block-wpm-person {
+	&[class*="background-color"] {
+		padding-top: @grid-gutter-width / 2;
+		padding-left: @grid-gutter-width / 2;
+		padding-right: @grid-gutter-width / 2;
+	}
+
+	/** BLOCK LAYOUTS **/
+	&.is-block-layout-img-left,
+	&.is-block-layout-img-right {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 100%;
+		grid-column-gap: @grid-gutter-width;
+
+		&[class*="background-color"] .wpm-person-img-wrapper {
+			padding-bottom: @grid-gutter-width / 2;
+		}
+		.wpm-person-contents {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	&.is-block-layout-img-right {
+		.wpm-person-img-wrapper {
+			grid-column: 2;
+			grid-row: 1;
+		}
+		.wpm-person-contents {
+			grid-column: 1;
+			grid-row: 1;
+		}
+	}
+	/** /BLOCK LAYOUTS **/
+
+	.wpm-person-img-wrapper {
+		.wrapper-inner {
+			position: relative;
+			overflow: hidden;
+
+			&:after {
+				content: "";
+				display: block;
+				padding-bottom: 100%;
+			}
+		}
+
+		/** IMAGE ALIGNMENT **/
+		&.image-align-center {
+			margin: 0 auto;
+		}
+		&.image-align-right {
+			margin-right: 0;
+			margin-left: auto;
+		}
+		/** /IMAGE ALIGNMENT **/
+
+		/** IMAGE LAYOUTS **/
+		&.image-layout-circle {
+			.wrapper-inner {
+				border-radius: 50%;
+			}
+
+			img.wpm-person-img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+		}
+		&.image-layout-rectangle {
+			img.wpm-person-img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		&.image-layout-hexagon {
+			.wrapper-inner {
+				position: relative;
+				width: 100%;
+				padding-bottom: 100% / 0.866;
+				overflow: hidden;
+				visibility: hidden;
+				transform: rotate(-60deg) skewY(30deg);
+				background: red;
+
+				* {
+					position: absolute;
+					visibility: visible;
+				}
+
+				.wrapper-inner-2 {
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					color: #fff;
+					overflow: hidden;
+					transform: skewY(-30deg) rotate(60deg);
+
+					img.wpm-person-img {
+						left: -100%;
+						right: -100%;
+						width: auto;
+						height: 100%;
+						margin: 0 auto;
+						object-fit: cover;
+					}
+				}
+
+				&:after {
+					display: none;
+				}
+				/*
+
+
+
+				.wrapper-inner-2 {
+
+
+
+				}*/
+			}
+		}
+		/** /IMAGE LAYOUTS **/
+	}
+}

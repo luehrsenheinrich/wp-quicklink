@@ -1,0 +1,10 @@
+{
+  "github": {
+    "release": true,
+    "assets": "update/*.zip"
+  },
+  "buildCommand": "grunt release && npm run freemius",
+	"src": {
+		"afterReleaseCommand": "npm run release-wp ${version}"
+	}
+}

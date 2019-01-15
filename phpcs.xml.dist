@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress LH">
+	<description>Some additional rule settings for development at Luehrsen // Heinrich</description>
+
+	<rule ref="PHPCompatibility"/>
+
+	<config name="testVersion" value="5.3-"/>
+
+	<!-- Sets the minimum supported WP version to 4.7, which is over a year old. -->
+	<config name="minimum_supported_wp_version" value="4.7" />
+
+	<rule ref="WordPress"/>
+	<rule ref="WordPress-Core"/>
+	<rule ref="WordPress-Docs"/>
+	<rule ref="WordPress-VIP">
+		<!--
+		OK, real talk right now. Yoda conditions are ridiculous.
+		The fundamental problem that Yoda conditions attempts to solve is:
+		the equality operator is very close to the assignment operator.
+		It's easy to mess up and accidentally assign to the variable you're
+		trying to check.
+		Here's the thing though. Yoda conditions just don't read correctly
+		in the code flow. They require you to change the way you think
+		about the control flow.
+		Rather than forcing every conditional to be backwards, why not ban
+		assignment from conditionals? You never really *need* to assign in
+		a conditional.
+		So, here's where I stand: no to Yoda conditions. Yes to banning
+		assignment in conditionals.
+
+		Thank you Human Made!
+		-->
+		<exclude name="WordPress.PHP.YodaConditions" />
+	</rule>
+	<rule ref="WordPress-Extra"/>
+
+	<arg name="extensions" value="php"/>
+
+	<!-- For CI, don't fail on warnings -->
+	<config name="ignore_warnings_on_exit" value="1"/>
+
+	<!-- Track our build folder -->
+	<file>./build</file>
+
+	<!-- Third party ressources -->
+	<exclude-pattern>./build/freemius</exclude-pattern>
+	<exclude-pattern>./bin-php</exclude-pattern>
+
+	<!-- Our Textdomain for i18n -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" value="wp-munich-blocks" />
+		</properties>
+	</rule>
+
+	<!-- Sometimes we need to override globals -->
+	<rule ref="WordPress.WP.GlobalVariablesOverride.OverrideProhibited">
+		<type>warning</type>
+	</rule>
+
+	<!-- Make missing translator comment a warning. -->
+	<rule ref="WordPress.WP.I18n.MissingTranslatorsComment">
+		<type>warning</type>
+	</rule>
+
+</ruleset>

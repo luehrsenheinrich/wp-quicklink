@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: wordpress
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_PASSWORD: example
+      ABSPATH: /usr/src/wordpress/
+    volumes:
+      - wordpress:/var/www/html
+      - ./trunk:/var/www/html/wp-content/plugins/wp-munich-blocks
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+
+  cli:
+    image: wordpress:cli
+    volumes:
+      - wordpress:/var/www/html
+      - ./trunk:/var/www/html/wp-content/plugins/wp-munich-blocks
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: wordpress_test
+
+volumes:
+  wordpress:

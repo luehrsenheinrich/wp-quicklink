@@ -1,0 +1,94 @@
+.wp-block-wpm-event {
+	border-radius: @grid-gutter-width / 4;
+	overflow: hidden;
+	text-align: initial;
+
+	font-size: 1rem;
+	line-height: 1.3333rem;
+
+	.event-datetime-square {
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+
+		float: left;
+
+		border: 1px solid;
+		border-radius: @grid-gutter-width / 8;
+		width: 4rem;
+		height: 4rem;
+		margin: @grid-gutter-width / 2;
+		text-align: center;
+
+		.day {
+			flex: 1 1 100%;
+			font-weight: 600;
+			font-size: 1.5em;
+			line-height: 1;
+			display: block;
+		}
+
+		.month {
+			flex: 1 1 100%;
+			text-transform: uppercase;
+			line-height: 1;
+		}
+	}
+
+	.event-image {
+		width: 100%;
+	}
+
+	.event-title {
+		margin: @grid-gutter-width / 2 @grid-gutter-width / 2 0 calc( @grid-gutter-width ~" + 4rem");
+		font-weight: 600;
+		align-self: end;
+		clear: none;
+
+		color: inherit;
+		vertical-align: top;
+
+		line-height: 1.3333em;
+		font-size: 1.5rem;
+
+		&:before, &:after {
+			display: none;
+		}
+	}
+
+	.event-datetime {
+		margin: 0 @grid-gutter-width / 2 @grid-gutter-width / 2 calc( @grid-gutter-width ~" + 4rem");
+		align-self: start;
+		font-size: 0.9em;
+	}
+
+	.event-address {
+		margin: 0 @grid-gutter-width / 2 @grid-gutter-width / 2 calc( @grid-gutter-width ~" + 4rem");
+		font-size: 0.9em;
+
+		.location-detail {
+			&:after {
+				content: "";
+				display: block;
+			}
+		}
+
+		.location-postal-code {
+			&:after {
+				content: none;
+			}
+		}
+	}
+
+	.event-description {
+		clear: both;
+		border-top: 1px solid;
+		padding: @grid-gutter-width / 2 @grid-gutter-width / 2 0;
+
+		p {
+			font-size: 1rem;
+		}
+	}
+}

@@ -1,0 +1,25 @@
+@import '../../less/variables';
+
+body {
+	.wp-block-wpm-background {
+		&.alignfull {
+			& > .entry-content {
+				max-width: calc(100% - ( 2 * 1rem ));
+				margin: 0 1rem;
+
+				@media (min-width: 768px) {
+					max-width: 80%;
+					margin: 0 10%;
+					padding: 0 60px;
+				}
+			}
+		}
+
+		&.alignwide {
+			& > .entry-content {
+				padding: 0 @grid-gutter-width;
+				margin: 0;
+			}
+		}
+	}
+}

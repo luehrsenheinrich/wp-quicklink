@@ -1,0 +1,32 @@
+/* Micro ClearFix Mixin */
+.clearfix() {
+  zoom:1;
+  &:before, &:after{ content:""; display:table; }
+  &:after{ clear: both; }
+}
+
+/* Generate the opacity helper classes */
+.has-opacity(@counter) when (@counter > 0) {
+  .has-opacity((@counter - 1));    // next iteration
+
+	@num: @counter * 10;
+
+	.has-opacity-@{num} {
+  	opacity: (@counter / 10); // code for each iteration
+	}
+}
+
+/* Helper function to loop lists */
+.for(@list, @code) {
+	& {
+		.loop(@i:1) when (@i =< length(@list)) {
+			@value: extract(@list, @i);
+
+			@code();
+
+			.loop(@i + 1);
+		}
+
+		.loop();
+	}
+}
