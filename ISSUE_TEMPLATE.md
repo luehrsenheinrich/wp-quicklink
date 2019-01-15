@@ -8,4 +8,4 @@ Can you provide a link to a page which shows this issue?
 
 ### Technical info
 * WordPress version:
-* wpm_blocks version:
+* quicklink version:

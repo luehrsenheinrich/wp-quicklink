@@ -1,4 +1,4 @@
-# WP Munich Blocks - Gutenberg Blocks for WordPress
+# Quicklink for WordPress
 
 TBD
 
@@ -6,7 +6,7 @@ This plugin is made with love and brought to you by the folks of [WP Munich](htt
 
 ## Documentation
 
-Developer documentation is available in the [Wiki](https://github.com/luehrsenheinrich/wpm_blocks/wiki)
+Developer documentation is available in the [Wiki](https://github.com/luehrsenheinrich/quicklink/wiki)
 
 ## Contributing
 

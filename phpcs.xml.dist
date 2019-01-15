@@ -49,7 +49,7 @@
 	<!-- Our Textdomain for i18n -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" value="wp-munich-blocks" />
+			<property name="text_domain" value="quicklink" />
 		</properties>
 	</rule>
 

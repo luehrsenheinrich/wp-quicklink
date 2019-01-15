@@ -4,11 +4,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: {
-    'blocks/blocks.min': path.resolve(__dirname, './build/blocks/blocks.js'),
-		'blocks/blocks-frontend.min': path.resolve(__dirname, './build/blocks/blocks-frontend.js'),
+    'quicklink.min': path.resolve(__dirname, './build/js/quicklink.js'),
 
-		'blocks-professional/blocks.min': path.resolve(__dirname, './build/blocks-professional/blocks.js'),
-		'blocks-professional/blocks-frontend.min': path.resolve(__dirname, './build/blocks-professional/blocks-frontend.js'),
   },
   mode: 'none',
   output: {

@@ -1,5 +1,5 @@
 {
-	"name": "luehrsenheinrich/wpm_blocks",
+	"name": "luehrsenheinrich/quicklink",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
 	"require-dev": {

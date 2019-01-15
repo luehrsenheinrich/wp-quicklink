@@ -1,12 +1,12 @@
 {
-  "version": "0.5.0",
-  "title": "WP Munich Blocks - Gutenberg Blocks for WordPress",
-  "slug": "wp-munich-blocks",
+  "version": "0.1.0",
+  "title": "Quicklink",
+  "slug": "quicklink",
   "author": "WP Munich",
-  "shortDesc": "Create amazing content with the new WordPress block editor and the WP Munich blocks.",
-  "tags": "gutenberg, blocks, layout-blocks, layout, pagebuilder, editor, gutenberg blocks, page builder, block",
-  "pluginUrl": "https://blocks.wp-munich.com/?utm_source=wporg&utm_medium=plugin_repo&utm_campaign=description",
-  "authorUrl": "https://www.wp-munich.com/?utm_source=wporg&utm_medium=plugin_repo&utm_campaign=description",
+  "shortDesc": "⚡️ Faster subsequent page-loads by prefetching in-viewport links during idle time.",
+  "tags": "performance, speed, fast, prefetch",
+  "pluginUrl": "https://blocks.wp-munich.com/?utm_source=wporg&utm_medium=plugin_repo&utm_campaign=description&utm_content=quicklink",
+  "authorUrl": "https://www.wp-munich.com/?utm_source=wporg&utm_medium=plugin_repo&utm_campaign=description&utm_content=quicklink",
   "minWpReq": "4.9",
   "testedWp": "5.0",
   "private": true,
@@ -34,14 +34,10 @@
     "grunt-postcss": "^0.9.0",
     "grunt-shell": "^2.1.0",
     "grunt-webpack": "^3.0.2",
-    "imagesloaded": "^4.1.4",
     "jit-grunt": "~0.10.0",
-    "jquery-parallax.js": "^1.5.0",
-    "lodash": "^4.17.5",
-    "magnific-popup": "^1.1.0",
-    "masonry-layout": "^4.2.1",
+    "quicklink": "^1.0.0",
     "release-it": "^7.4.7",
-    "uglifyjs-webpack-plugin": "^1.2.3",
+    "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.16.1",
     "webpack-cli": "^2.0.11"
   },
@@ -49,10 +45,9 @@
     "setup": "sh bin/setup-local-env.sh",
     "remove": "docker-compose down --volumes --remove-orphans",
     "release": "env-cmd .env release-it",
-    "freemius": "sh ./bin-php/run-freemius-deploy.sh",
     "webpack": "webpack",
     "dev": "sh bin/setup-local-env.sh && grunt watch",
-    "release-wp": "sh bin/wp-repo-release.sh update/wp-munich-blocks.zip wp-munich-blocks"
+    "release-wp": "sh bin/wp-repo-release.sh update/quicklink.zip quicklink"
   },
   "dependencies": {}
 }

@@ -25,5 +25,5 @@ echo $(status_message "Starting the WP Munich development enviroment..." )
 
 CURRENT_URL=$(docker-compose run -T --rm cli option get siteurl)
 
-echo "\nWelcome to WP Munich Blocks\n"
+echo "\nWelcome to Quicklink for WordPress\n"
 echo "Run $(action_format "grunt watch"), then open $(action_format "$CURRENT_URL") to get started!"

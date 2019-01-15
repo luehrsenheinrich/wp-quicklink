@@ -33,22 +33,20 @@ if ! $(${WP_CLI} core is-installed); then
 
 	# Install WordPress
 	echo $(status_message "Installing WordPress...")
-	${WP_CLI} core install --url=localhost --title="WP Blocks Test" --admin_user=wordpress --admin_password=wordpress --admin_email=info@luehrsen-heinrich.de
+	${WP_CLI} core install --url=localhost --title="Quicklink for WordPress" --admin_user=wordpress --admin_password=wordpress --admin_email=info@luehrsen-heinrich.de
 
 	# Check for WordPress updates, just in case the WordPress image isn't up to date.
 	${WP_CLI} core update
 
 	# Activate the plugin
-	${WP_CLI} plugin activate wp-munich-blocks
+	${WP_CLI} plugin activate quicklink
 
 	# Import and activate needed plugins
-	${WP_CLI} plugin install wordpress-importer query-monitor debug-bar atomic-blocks --activate
+	${WP_CLI} plugin install wordpress-importer query-monitor debug-bar --activate
 	${WP_CLI} plugin install gutenberg
 
 	# Activate debugging
 	${WP_CLI} config set WP_DEBUG true --raw
-	${WP_CLI} config set WP_FS__DEV_MODE true --raw --type=constant
-	${WP_CLI} config set WP_FS__SKIP_EMAIL_ACTIVATION true --raw --type=constant
 
   docker-compose run --user=root wordpress chown www-data -R /var/www/
 

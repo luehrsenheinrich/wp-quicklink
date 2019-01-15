@@ -22,15 +22,6 @@ module.exports = function(grunt) {
 			files: {
 			  "build/admin/admin.css": "build/admin/less/admin.less", // destination file and source file
 
-			  "build/blocks/blocks-editor.css": "build/blocks/blocks-editor.less",
-			  "build/blocks/blocks.css": "build/blocks/blocks.less",
-
-			  "build/blocks-professional/blocks-editor.css": "build/blocks-professional/blocks-editor.less",
-			  "build/blocks-professional/blocks.css": "build/blocks-professional/blocks.less",
-
-				"build/css/filter.css": "build/less/filter/filter.less",
-
-				"build/theme-compatibility/css/twentynineteen.css": "build/theme-compatibility/less/twentynineteen.less"
 			}
 	  },
 	},
@@ -46,15 +37,6 @@ module.exports = function(grunt) {
 			files: {
 				"build/admin/admin.css": "build/admin/admin.css",
 
-				"build/blocks/blocks-editor.css": "build/blocks/blocks-editor.css",
-				"build/blocks/blocks.css": "build/blocks/blocks.css",
-
-				"build/blocks-professional/blocks-editor.css": "build/blocks-professional/blocks-editor.css",
-				"build/blocks-professional/blocks.css": "build/blocks-professional/blocks.css",
-
-				"build/css/filter.css": "build/css/filter.css",
-
-				"build/theme-compatibility/css/twentynineteen.css": "build/theme-compatibility/css/twentynineteen.css"
 			}
 		},
 		minify: {
@@ -67,15 +49,6 @@ module.exports = function(grunt) {
 			files: {
 				"build/admin/admin.min.css": "build/admin/admin.css",
 
-				"build/blocks/blocks-editor.min.css": "build/blocks/blocks-editor.css",
-				"build/blocks/blocks.min.css": "build/blocks/blocks.css",
-
-				"build/blocks-professional/blocks-editor.min.css": "build/blocks-professional/blocks-editor.css",
-				"build/blocks-professional/blocks.min.css": "build/blocks-professional/blocks.css",
-
-				"build/css/filter.min.css": "build/css/filter.css",
-
-				"build/theme-compatibility/css/twentynineteen.min.css": "build/theme-compatibility/css/twentynineteen.css"
 			}
 		}
 	},
@@ -190,7 +163,7 @@ module.exports = function(grunt) {
 	compress: {
 	  main: {
 			options: {
-			  archive: 'update/<%= pkg.slug %>-premium.zip'
+			  archive: 'update/<%= pkg.slug %>.zip'
 			},
 			files: [
 			  {src: ['**'], cwd: 'trunk', expand: true, dest: '<%= pkg.slug %>'}, // includes files in path
