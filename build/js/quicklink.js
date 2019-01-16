@@ -10,5 +10,6 @@ quicklink({
  			return href === uri;
 		},
 		uri => uri.includes( window.location.href + '#' ), // ignore self with hash
+		uri => uri.includes( '/wp-content/' ), // Do not preload wp-content items (like downloads)
 	]
 });
