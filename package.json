@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "title": "Quicklink",
+  "title": "Quicklink for WordPress",
   "slug": "quicklink",
   "author": "WP Munich",
   "shortDesc": "⚡️ Faster subsequent page-loads by prefetching in-viewport links during idle time.",
