@@ -22,13 +22,13 @@ This plugin builds heavily on the amazing work done by [Google Chrome Labs](http
 #### From within WordPress
 
 1. Visit 'Plugins > Add New'
-1. Search for 'WP Munich Blocks'
-1. Activate WP Munich Blocks from your Plugins page.
+1. Search for 'Quicklink for WordPress'
+1. Activate Quicklink for WordPress from your Plugins page.
 
 #### Manually
 
-1. Upload the `wp-munich-blocks` folder to the `/wp-content/plugins/` directory
-1. Activate the WP Munich Blocks plugin through the 'Plugins' menu in WordPress
+1. Upload the `quicklink` folder to the `/wp-content/plugins/` directory
+1. Activate the Quicklink for WordPress plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
 
