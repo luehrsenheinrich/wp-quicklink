@@ -32,5 +32,9 @@ This plugin builds heavily on the amazing work done by [Google Chrome Labs](http
 
 == Changelog ==
 
+= 0.2.0 =
+* Release for the plugin repository
+* Tuned quicklink ignores for WordPress
+
 = 0.1.0 =
 * Initial release
