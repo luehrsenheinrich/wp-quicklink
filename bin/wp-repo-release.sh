@@ -50,6 +50,7 @@ echo $(status_message "Copying new plugin version on SVN locally")
 rm -fr "$wpdomain"/trunk
 cp -r "$extract/$wpdomain/." ./"$wpdomain"/trunk
 rm -fr "$wpdomain"/tags/
+rm -fr "$wpdomain"/assets/
 rsync -rv --exclude=*.psd "$basedir/assets/." ./"$wpdomain"/assets
 
 echo $(status_message "Deploying new plugin version on SVN remote")
