@@ -1,6 +1,6 @@
 # Contributing to the Quicklink for WordPress
 
-Hi! Thank you for your interest in contributing to the theme, we really appreciate it.
+Hi! Thank you for your interest in contributing to the plugin, we really appreciate it.
 
 There are many ways to contribute – reporting bugs, feature suggestions, fixing bugs, submitting pull requests for enhancements.
 
@@ -9,8 +9,6 @@ There are many ways to contribute – reporting bugs, feature suggestions, fixin
 Just [file a GitHub issue](https://github.com/luehrsenheinrich/quicklink/issues/new), that’s all. If you want to prefix the title with a “Question:”, “Bug:”, or the general area of the application, that would be helpful, but by no means mandatory. If you have write access, add the appropriate labels.
 
 If you’re filing a bug, specific steps to reproduce are helpful. Please include the URL of the page that has the bug, along with what you expected to see and what happened instead.
-
-Here is a [handy link for submitting a new bug](https://github.com/luehrsenheinrich/quicklink/issues/new?body=URL%3A%0A%0AWhat+I+expected%3A%0A%0ASteps+to+reproduce%3A%0A%0AWhat+happened+instead%3A&title=Description%20of%20the%20problem).
 
 ## Helping with the documentation
 
@@ -41,7 +39,7 @@ To keep the work in this repository structured and visible, we follow a certain 
 3. As soon as you have a presentable solution, add a pull request to the master branch
 4. Get feedback about your implementation
 5. Before merging the PR to the master branch, update your branch from master to resolve conflicts
-6. Merge the PR into the master branch, test the solution and delete your branch
+6. Merge the PR into the master branch and delete your branch
 
 ### Naming branches
 
