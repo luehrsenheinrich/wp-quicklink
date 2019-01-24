@@ -122,7 +122,11 @@ function quicklink_enqueue_scripts() {
 
 			/* Obtain function reference. */
 			if ( options.timeoutFn ) {
-				options.timeoutFn = window[ options.timeoutFn ];
+				var timeoutFnName = options.timeoutFn;
+				options.timeoutFn = function() {
+					// @todo timeoutFnName should really allow for referencing object properties, like 'myLib.foo.bar.callback'.
+					return window[ timeoutFnName ].apply( window, arguments );
+				};
 			}
 
 			return options;
