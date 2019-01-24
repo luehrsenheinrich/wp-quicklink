@@ -14,7 +14,7 @@ If you’re filing a bug, specific steps to reproduce are helpful. Please includ
 
 Every theme is just as good as the documentation. In this repository we offer [collaboration with a wiki](https://github.com/luehrsenheinrich/quicklink/wiki) to create a documentation for this theme.
 
-## Setting up the dev enviroment
+## Setting up the dev environment
 
 If you want to contribute code to the theme you have to set up the environment locally. Make sure that you have `npm` and `grunt` installed.
 

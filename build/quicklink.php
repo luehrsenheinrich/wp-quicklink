@@ -44,6 +44,6 @@ register_deactivation_hook( __FILE__, 'deactivate_quicklink' );
  * Embed the scripts we need for this plugin
  */
 function quicklink_enqueue_scripts() {
-	wp_enqueue_script( 'quicklink', QUICKLINK_URL . '/quicklink.min.js', array(), '<##= pkg.version ##>', true );
+	wp_enqueue_script( 'quicklink', QUICKLINK_URL . 'quicklink.min.js', array(), '<##= pkg.version ##>', true );
 }
 add_action( 'wp_enqueue_scripts', 'quicklink_enqueue_scripts' );
