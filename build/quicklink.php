@@ -74,11 +74,8 @@ function quicklink_enqueue_scripts() {
 			preg_quote( 'feed=', '/' ),
 			preg_quote( '/feed/', '/' ),
 
-			// Do not preload self.
-			preg_quote( wp_unslash( $_SERVER['REQUEST_URI'] ), '/' ) . '#', // phpcs:ignore
-
-			// Ignore self with hash.
-			preg_quote( wp_unslash( $_SERVER['REQUEST_URI'] ), '/' ) . '#', // phpcs:ignore
+			// Do not preload self, including self with hash.
+			'^https?:\/\/[^\/]+' . preg_quote( wp_unslash( $_SERVER['REQUEST_URI'] ), '/' ) . '(#.*)?$', // phpcs:ignore
 
 			// Do not preload wp-content items (like downloads).
 			preg_quote( wp_parse_url( content_url(), PHP_URL_PATH ), '/' ),
