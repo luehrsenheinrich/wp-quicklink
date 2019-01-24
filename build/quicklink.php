@@ -44,6 +44,11 @@ register_deactivation_hook( __FILE__, 'deactivate_quicklink' );
  * Embed the scripts we need for this plugin
  */
 function quicklink_enqueue_scripts() {
+	// Abort if the response is AMP since custom JavaScript isn't allowed and Quicklink functionality would be part of the AMP runtime.
+	if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+		return;
+	}
+
 	wp_enqueue_script( 'quicklink', QUICKLINK_URL . 'quicklink.min.js', array(), '<##= pkg.version ##>', true );
 }
 add_action( 'wp_enqueue_scripts', 'quicklink_enqueue_scripts' );
