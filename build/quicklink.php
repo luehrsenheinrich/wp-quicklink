@@ -102,6 +102,45 @@ function quicklink_enqueue_scripts() {
 	 */
 	$options = apply_filters( 'quicklink_options', $options );
 
-	wp_add_inline_script( 'quicklink', 'quicklink(' . wp_json_encode( $options ) . ')', 'after' );
+	// @todo Probably better to put this in a separate JS file.
+	ob_start();
+	?>
+	<script>
+		(function( options ) {
+
+			/* Convert selector into element reference. */
+			if ( options.el ) {
+				options.el = document.querySelector( options.el );
+			}
+
+			/* Convert strings to regular expressions. */
+			if ( options.ignores ) {
+				options.ignores = options.ignores.map( function( ignore ) {
+					return new RegExp( ignore );
+				} );
+			}
+
+			/* Obtain function reference. */
+			if ( options.timeoutFn ) {
+				options.timeoutFn = window[ options.timeoutFn ];
+			}
+
+			return options;
+		})( OPTIONS_JSON )
+	</script>
+	<?php
+	$options_js_expression = str_replace(
+		array( '<script>', '</script>' ),
+		'',
+		ob_get_clean()
+	);
+
+	$options_js_expression = str_replace( 'OPTIONS_JSON', wp_json_encode( $options ), $options_js_expression );
+
+	wp_add_inline_script(
+		'quicklink',
+		sprintf( 'document.addEventListener( "DOMContentLoaded", function() { quicklink( %s ) } )', $options_js_expression ),
+		'after'
+	);
 }
 add_action( 'wp_enqueue_scripts', 'quicklink_enqueue_scripts' );
