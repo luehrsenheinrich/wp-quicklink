@@ -17,12 +17,8 @@ document.addEventListener( "DOMContentLoaded", () => {
 	}
 
 	/* Obtain function reference. */
-	if ( options.timeoutFn ) {
-		var timeoutFnName = options.timeoutFn;
-		options.timeoutFn = () => {
-			// @todo timeoutFnName should really allow for referencing object properties, like 'myLib.foo.bar.callback'.
-			return window[ timeoutFnName ].apply( window, arguments );
-		};
+	if ( options.timeoutFn && 'requestIdleCallback' !== options.timeoutFn ) {
+		options.timeoutFn = window[ options.timeoutFn ];
 	}
 
 	quicklink( options );
