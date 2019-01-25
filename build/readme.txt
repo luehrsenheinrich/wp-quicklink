@@ -1,6 +1,6 @@
 === <##= pkg.title ##> ===
 
-Contributors: wpmunich, luehrsen
+Contributors: wpmunich, google, luehrsen, westonruter
 Tags: <##= pkg.tags ##>
 Requires at least: <##= pkg.minWpReq ##>
 Tested up to: <##= pkg.testedWp ##>
