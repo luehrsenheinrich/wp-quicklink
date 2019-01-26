@@ -3,7 +3,7 @@
     "release": true,
     "assets": "update/*.zip"
   },
-  "buildCommand": "grunt release && npm run freemius",
+  "buildCommand": "grunt release",
 	"src": {
 		"afterReleaseCommand": "npm run release-wp"
 	}
