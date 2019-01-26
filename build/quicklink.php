@@ -63,6 +63,12 @@ function quicklink_enqueue_scripts() {
 			// Do not preload self, including self with hash.
 			'^https?:\/\/[^\/]+' . preg_quote( wp_unslash( $_SERVER['REQUEST_URI'] ), '/' ) . '(#.*)?$', // phpcs:ignore
 
+			// Don't pre-fetch links to the admin since they could be nonce links.
+			'^' . preg_quote( admin_url(), '/' ),
+
+			// Don't pre-fetch links to PHP files, like wp-login.php.
+			'^' . preg_quote( site_url(), '/' ) . '[^?#]+\.php',
+
 			// Do not preload wp-content items (like downloads).
 			preg_quote( wp_parse_url( content_url(), PHP_URL_PATH ), '/' ),
 		),
