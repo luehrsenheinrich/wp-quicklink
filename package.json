@@ -13,6 +13,7 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@wordpress/babel-preset-default": "^3.0.2",
+    "@wordpress/eslint-plugin": "^1.0.1",
     "autoprefixer": "^9.4.6",
     "babel-loader": "^8.0.5",
     "cssnano": "^4.1.8",
@@ -25,6 +26,7 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-less": "^2.0.0",
     "grunt-contrib-watch": "^1.1.0",
+    "grunt-eslint": "^21.0.0",
     "grunt-newer": "^1.3.0",
     "grunt-newer-less": "^1.0.2",
     "grunt-postcss": "^0.9.0",
@@ -43,7 +45,8 @@
     "release": "env-cmd .env release-it",
     "webpack": "webpack",
     "dev": "sh bin/setup-local-env.sh && grunt watch",
-    "release-wp": "sh bin/wp-repo-release.sh update/quicklink.zip quicklink"
+    "release-wp": "sh bin/wp-repo-release.sh update/quicklink.zip quicklink",
+    "eslint": "eslint"
   },
   "dependencies": {}
 }

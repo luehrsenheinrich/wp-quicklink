@@ -53,7 +53,11 @@ module.exports = function(grunt) {
 	},
 
 	// JAVASCRIPT
+	eslint: {
+		target: ['build/js/**/*.js'],
+	},
 
+	// PHP
 	webpack: {
     prod: webpackConfig,
   },
@@ -176,7 +180,7 @@ module.exports = function(grunt) {
   grunt.registerTask( 'deploy_css', ['handle_css', 'newer:copy:build_css'] );
   grunt.registerTask( 'deploy_php', ['handle_php', 'newer:copy:build_php'] );
 
-  grunt.registerTask( 'deploy', ['handle_php', 'handle_js', 'handle_css', 'clean:build', 'copy:build', 'copy:build_css', 'copy:build_php', 'copy:build_stream'] );
+  grunt.registerTask( 'deploy', ['handle_php', 'eslint', 'handle_js', 'handle_css', 'clean:build', 'copy:build', 'copy:build_css', 'copy:build_php', 'copy:build_stream'] );
 
   grunt.registerTask( 'dev-deploy', ['handle_js', 'handle_css', 'newer:copy:build', 'newer:copy:build_stream'] );
 
