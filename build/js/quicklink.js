@@ -2,49 +2,49 @@ import quicklink from "quicklink/dist/quicklink.mjs";
 
 document.addEventListener( "DOMContentLoaded", () => {
 
-	const tempOptions = Object.assign( {}, window.quicklinkOptions );
+	const exportedOptions = window.quicklinkOptions || {};
+
 	const options = {};
 
-
-	/* Convert selector into element reference. */
-	if ( tempOptions.el && tempOptions.el !== '' ) {
-		options.el = document.querySelector( tempOptions.el );
+	// el: Convert selector into element reference.
+	if ( typeof exportedOptions.el === 'string' ) {
+		options.el = document.querySelector( exportedOptions.el );
 	}
 
-	/* Verify we don't get an empty array, as that would turn off quicklink */
-	if ( 	tempOptions.urls &&
-				typeof tempOptions.urls === 'object' &&
-				tempOptions.urls.length > 0
-			) {
-		options.urls = tempOptions.urls;
+	// urls: Verify we don't get an empty array, as that would turn off quicklink.
+	if ( Array.isArray( exportedOptions.urls ) &&exportedOptions.urls.length > 0 ) {
+		options.urls = exportedOptions.urls;
 	}
 
-	/* Verify we actually get an int for ms */
- 	if ( parseInt( tempOptions.timeout ) ) {
-		options.timeout = parseInt( tempOptions.timeout );
+	// timeout: Verify we actually get an int for milliseconds.
+	if ( typeof exportedOptions.timeout === 'number' ) {
+		options.timeout = exportedOptions.timeout;
 	}
 
-	/* Obtain function reference. */
-	if ( tempOptions.timeoutFn && 'requestIdleCallback' !== tempOptions.timeoutFn ) {
-		options.timeoutFn = window[ tempOptions.timeoutFn ];
+	// timeoutFn: Obtain function reference as opposed to function string, if it is not the default.
+	if ( typeof exportedOptions.timeoutFn === 'string' && 'requestIdleCallback' !== exportedOptions.timeoutFn ) {
+		const timeoutFn = window[ exportedOptions.timeoutFn ];
+		options.timeoutFn = function () {
+			return timeoutFn.apply( window, arguments );
+		};
 	}
 
-	/* Verify we don't get an empty array, as that would turn off quicklink */
-	if ( 	tempOptions.origins &&
-				typeof tempOptions.origins === 'object' &&
-				tempOptions.origins.length > 0
-			) {
-		options.origins = tempOptions.origins;
+	// priority: Obtain priority.
+	if ( typeof exportedOptions.priority === 'boolean' ) {
+		options.priority = exportedOptions.priority;
 	}
 
-	/* Convert strings to regular expressions. */
-	if ( tempOptions.ignores ) {
-		options.ignores = tempOptions.ignores.map( ( ignore ) => {
+	// origins: Verify we don't get an empty array, as that would turn off quicklink.
+	if ( Array.isArray( exportedOptions.origins ) && exportedOptions.origins.length > 0 ) {
+		options.origins = exportedOptions.origins;
+	}
+
+	// ignores: Convert strings to regular expressions.
+	if ( Array.isArray( exportedOptions.ignores ) && exportedOptions.ignores.length > 0 ) {
+		options.ignores = exportedOptions.ignores.map( ( ignore ) => {
 			return new RegExp( ignore );
 		} );
 	}
-
-	console.log( options );
 
 	quicklink( options );
 } );
