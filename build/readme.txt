@@ -32,6 +32,11 @@ This plugin builds heavily on the amazing work done by [Google Chrome Labs](http
 
 == Changelog ==
 
+= unreleased =
+* Added compatibility with AMP
+* Added amazing contributors
+* Added the new WordPress filter 'quicklink_options' to modify quicklink settings
+
 = 0.2.0 =
 * Release for the plugin repository
 * Tuned quicklink ignores for WordPress
