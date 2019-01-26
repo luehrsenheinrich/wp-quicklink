@@ -1,6 +1,6 @@
 import quicklink from 'quicklink/dist/quicklink.mjs';
 
-document.addEventListener( 'DOMContentLoaded', () => {
+window.addEventListener( 'load', () => {
 
 	const exportedOptions = window.quicklinkOptions || {};
 

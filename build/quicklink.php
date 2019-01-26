@@ -98,3 +98,22 @@ function quicklink_enqueue_scripts() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'quicklink_enqueue_scripts' );
+
+/**
+ * Add async attribute to Quicklink script tag.
+ *
+ * @link https://github.com/WordPress/twentynineteen/pull/646
+ * @link https://github.com/wprig/wprig/blob/9a7c23d8d3db735259de6c338ddbb7cb7fd0ada1/dev/inc/template-functions.php#L41-L70
+ * @link https://core.trac.wordpress.org/ticket/12009
+ *
+ * @param string $tag    Script tag.
+ * @param string $handle Script handle.
+ * @return string Script tag.
+ */
+function quicklink_add_async_attr_to_script_loader_tag( $tag, $handle ) {
+	if ( 'quicklink' === $handle && false === strpos( $tag, 'async' ) ) {
+		$tag = preg_replace( ':(?=></script>):', ' async', $tag );
+	}
+	return $tag;
+}
+add_filter( 'script_loader_tag', 'quicklink_add_async_attr_to_script_loader_tag', 10, 2 );
