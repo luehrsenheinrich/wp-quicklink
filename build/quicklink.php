@@ -19,26 +19,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
 define( 'QUICKLINK_URL', plugin_dir_url( __FILE__ ) );
 define( 'QUICKLINK_PATH', plugin_dir_path( __FILE__ ) );
-
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-plugin-name-activator.php
- */
-function activate_quicklink() {
-
-}
-register_activation_hook( __FILE__, 'activate_quicklink' );
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-plugin-name-deactivator.php
- */
-function deactivate_quicklink() {
-}
-register_deactivation_hook( __FILE__, 'deactivate_quicklink' );
 
 /**
  * Embed the scripts we need for this plugin
@@ -90,9 +72,9 @@ function quicklink_enqueue_scripts() {
 	 * Filters Quicklink options.
 	 *
 	 * @param array {
-	 *     Configuration options for quicklink.
+	 *     Configuration options for Quicklink.
 	 *
-	 *     @param string[] $urls      Array of URLs to prefetch (override)
+	 *     @param string[] $urls      Array of URLs to prefetch (override).
 	 *     @param string   $el        CSS selector for the DOM element to prefetch in-viewport links for.
 	 *     @param bool     $priority  Attempt higher priority fetch (low or high). Default false.
 	 *     @param string[] $origins   Allowed origins to prefetch (empty allows all). Defaults to host for current home URL.
