@@ -32,6 +32,9 @@ This plugin builds heavily on the amazing work done by [Google Chrome Labs](http
 
 == Changelog ==
 
+= unreleased =
+* Updated the script loading to load asynchronously
+
 = 0.3.0 =
 * Added compatibility with AMP
 * Added amazing contributors
