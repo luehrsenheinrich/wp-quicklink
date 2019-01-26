@@ -42,7 +42,7 @@ if ! $(${WP_CLI} core is-installed); then
 	${WP_CLI} plugin activate quicklink
 
 	# Import and activate needed plugins
-	${WP_CLI} plugin install wordpress-importer query-monitor debug-bar --activate
+	${WP_CLI} plugin install wordpress-importer query-monitor debug-bar amp pwa --activate
 	${WP_CLI} plugin install gutenberg
 
 	# Activate debugging
