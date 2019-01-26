@@ -1,50 +1,50 @@
-import quicklink from "quicklink/dist/quicklink.mjs";
+import quicklink from 'quicklink/dist/quicklink.mjs';
 
-document.addEventListener( "DOMContentLoaded", () => {
+document.addEventListener( 'DOMContentLoaded', () => {
 
 	const exportedOptions = window.quicklinkOptions || {};
 
 	const options = {};
 
 	// el: Convert selector into element reference.
-	if ( typeof exportedOptions.el === 'string' ) {
+	if ( 'string' === typeof exportedOptions.el && exportedOptions.el ) {
 		options.el = document.querySelector( exportedOptions.el );
 	}
 
 	// urls: Verify we don't get an empty array, as that would turn off quicklink.
-	if ( Array.isArray( exportedOptions.urls ) &&exportedOptions.urls.length > 0 ) {
+	if ( Array.isArray( exportedOptions.urls ) && 0 < exportedOptions.urls.length ) {
 		options.urls = exportedOptions.urls;
 	}
 
 	// timeout: Verify we actually get an int for milliseconds.
-	if ( typeof exportedOptions.timeout === 'number' ) {
+	if ( 'number' === typeof exportedOptions.timeout ) {
 		options.timeout = exportedOptions.timeout;
 	}
 
 	// timeoutFn: Obtain function reference as opposed to function string, if it is not the default.
-	if ( typeof exportedOptions.timeoutFn === 'string' && 'requestIdleCallback' !== exportedOptions.timeoutFn ) {
+	if ( 'string' === typeof exportedOptions.timeoutFn && 'requestIdleCallback' !== exportedOptions.timeoutFn ) {
 		const timeoutFn = window[ exportedOptions.timeoutFn ];
-		options.timeoutFn = function () {
+		options.timeoutFn = function() {
 			return timeoutFn.apply( window, arguments );
 		};
 	}
 
 	// priority: Obtain priority.
-	if ( typeof exportedOptions.priority === 'boolean' ) {
+	if ( 'boolean' === typeof exportedOptions.priority ) {
 		options.priority = exportedOptions.priority;
 	}
 
 	// origins: Verify we don't get an empty array, as that would turn off quicklink.
-	if ( Array.isArray( exportedOptions.origins ) && exportedOptions.origins.length > 0 ) {
+	if ( Array.isArray( exportedOptions.origins ) && 0 < exportedOptions.origins.length ) {
 		options.origins = exportedOptions.origins;
 	}
 
 	// ignores: Convert strings to regular expressions.
-	if ( Array.isArray( exportedOptions.ignores ) && exportedOptions.ignores.length > 0 ) {
+	if ( Array.isArray( exportedOptions.ignores ) && 0 < exportedOptions.ignores.length ) {
 		options.ignores = exportedOptions.ignores.map( ( ignore ) => {
 			return new RegExp( ignore );
-		} );
+		});
 	}
 
 	quicklink( options );
-} );
+});
