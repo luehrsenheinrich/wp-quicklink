@@ -5,7 +5,7 @@
   "author": "WP Munich",
   "shortDesc": "⚡️ Faster subsequent page-loads by prefetching in-viewport links during idle time.",
   "tags": "performance, speed, fast, prefetch, seo, http2, preconnect, optimization",
-  "pluginUrl": "https://www.wp-munich.com/?utm_source=wporg&utm_medium=plugin_repo&utm_campaign=description&utm_content=quicklink",
+  "pluginUrl": "https://wordpress.org/plugins/quicklink/",
   "authorUrl": "https://www.wp-munich.com/?utm_source=wporg&utm_medium=plugin_repo&utm_campaign=description&utm_content=quicklink",
   "minWpReq": "4.9",
   "testedWp": "5.0",
