@@ -1,0 +1,14 @@
+sudo: required
+dist: trusty
+
+language: php
+php:
+  - 7
+
+install:
+  - composer install
+  - npm install
+
+script:
+  - grunt lint
+  - grunt deploy
