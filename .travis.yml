@@ -1,14 +1,19 @@
-sudo: required
 dist: trusty
 
 language: php
 php:
   - 7
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.npm
+    - $HOME/.nvm/.cache
+
 install:
   - composer install
   - npm install
 
 script:
-  - grunt lint
-  - grunt deploy
+  - npx grunt lint
+  - npx grunt deploy
