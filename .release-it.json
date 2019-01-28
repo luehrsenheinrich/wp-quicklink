@@ -3,8 +3,8 @@
     "release": true,
     "assets": "update/*.zip"
   },
-  "buildCommand": "grunt release",
-	"src": {
-		"afterReleaseCommand": "npm run release-wp"
+	"scripts": {
+		"afterBump": "npx grunt release",
+		"afterRelease": "npm run release-wp"
 	}
 }
