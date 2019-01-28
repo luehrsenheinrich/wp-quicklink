@@ -32,7 +32,7 @@ This plugin builds heavily on the amazing work done by [Google Chrome Labs](http
 
 == Changelog ==
 
-= unreleased =
+= 0.4.0 =
 * Updated the script loading to load asynchronously
 * Updated the plugin assets
 
