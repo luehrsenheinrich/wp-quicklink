@@ -1,7 +1,6 @@
 import quicklink from 'quicklink/dist/quicklink.mjs';
 
 window.addEventListener( 'load', () => {
-
 	const exportedOptions = window.quicklinkOptions || {};
 
 	const options = {};
@@ -43,8 +42,8 @@ window.addEventListener( 'load', () => {
 	if ( Array.isArray( exportedOptions.ignores ) && 0 < exportedOptions.ignores.length ) {
 		options.ignores = exportedOptions.ignores.map( ( ignore ) => {
 			return new RegExp( ignore );
-		});
+		} );
 	}
 
 	quicklink( options );
-});
+} );

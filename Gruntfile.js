@@ -21,7 +21,6 @@ module.exports = function(grunt) {
 			},
 			files: {
 			  "build/admin/admin.css": "build/admin/less/admin.less", // destination file and source file
-
 			}
 	  },
 	},
@@ -54,7 +53,11 @@ module.exports = function(grunt) {
 	},
 
 	// JAVASCRIPT
+	eslint: {
+		target: ['build/js/**/*.js'],
+	},
 
+	// PHP
 	webpack: {
     prod: webpackConfig,
   },
@@ -122,18 +125,8 @@ module.exports = function(grunt) {
 		},
 		build_css:  {expand: true, cwd: 'build', src: ['**/*.min.css'], dest: 'trunk/', filter: 'isFile'},
 		build_php:  {expand: true, cwd: 'build', src: ['**/*.php'], dest: 'trunk/', filter: 'isFile'},
-		build_freemius:  {expand: true, cwd: 'build', src: ['freemius/**/*', '!freemius/assets/img/**/*'], dest: 'trunk/', filter: 'isFile'},
 		build: {expand: true, cwd: 'build', src: ['**/*.min.js', '**/*.bundle.js', '**/*.min.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/*.tmpl.html'], dest: 'trunk/', filter: 'isFile'},
 		build_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo', 'img/**/*'], dest: 'trunk/', filter: 'isFile'},
-
-		build_fontawesome: {
-			expand: true,
-			options: { encoding: null },
-			cwd: 'node_modules/font-awesome/fonts',
-			src: ['*'],
-			dest: 'trunk/fonts/font-awesome',
-			filter: 'isFile'
-		}
 	},
 
 	// Clean out folders
@@ -181,21 +174,25 @@ module.exports = function(grunt) {
   // These tasks are not needed at the moment, as we do not have any css or js files (yet).
   grunt.registerTask( 'handle_css', ['less:development', 'newer:postcss:autoprefix', 'postcss:minify'] );
   grunt.registerTask( 'handle_js', ['webpack'] );
-  grunt.registerTask( 'handle_php', ['shell:lint_php'] );
+  grunt.registerTask( 'handle_php', [] );
 
-  // copy admin stuff
-  grunt.registerTask( 'handle_admin_copy', ['copy:admin_fonts', 'copy:admin_tmpl', 'copy:admin_assets'] );
+	// Linting
+	grunt.registerTask( 'lint_php', ['shell:lint_php'] );
+	grunt.registerTask( 'lint_js', ['eslint'] );
+	grunt.registerTask( 'lint', ['lint_php', 'lint_js' ] );
 
   // Deployment strategies. The dev-deploy runs with the watcher and performs quicker. The deploy performs a clean of the trunk folder and a clean copy of the needed files.
   grunt.registerTask( 'deploy_css', ['handle_css', 'newer:copy:build_css'] );
   grunt.registerTask( 'deploy_php', ['handle_php', 'newer:copy:build_php'] );
 
-  grunt.registerTask( 'deploy', ['handle_php', 'handle_js', 'handle_css', 'clean:build', 'copy:build', 'copy:build_css', 'copy:build_php', 'copy:build_stream', 'copy:build_fontawesome', 'copy:build_freemius'] );
+	// A complete deploy done during initial setup
+  grunt.registerTask( 'deploy', ['handle_php', 'handle_js', 'handle_css', 'clean:build', 'copy:build', 'copy:build_css', 'copy:build_php', 'copy:build_stream'] );
 
+	// A partial deploy during the watch tasks
   grunt.registerTask( 'dev-deploy', ['handle_js', 'handle_css', 'newer:copy:build', 'newer:copy:build_stream'] );
 
   // The release task adds a new tag in the release folder.
-  grunt.registerTask( 'release', ['deploy', 'clean:update', 'compress'] );
+  grunt.registerTask( 'release', ['lint', 'deploy', 'clean:update', 'compress'] );
 
 
 };

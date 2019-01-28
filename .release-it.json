@@ -5,6 +5,6 @@
   },
   "buildCommand": "grunt release",
 	"src": {
-		"afterReleaseCommand": "npm run release-wp ${version}"
+		"afterReleaseCommand": "npm run release-wp"
 	}
 }
