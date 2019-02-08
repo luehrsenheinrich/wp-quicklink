@@ -71,6 +71,10 @@ function quicklink_enqueue_scripts() {
 
 			// Do not preload wp-content items (like downloads).
 			preg_quote( wp_parse_url( content_url(), PHP_URL_PATH ), '/' ),
+			
+			// Do not preload woocommerce items.
+			preg_quote(!is_woocommerce() && !is_cart() && !is_checkout() && !is_account_page() && !is_product() && !is_product_category() && !is_shop(), '/' ),
+			
 		),
 	);
 
