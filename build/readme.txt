@@ -17,6 +17,8 @@ Quicklink for WordPress attempts to make navigation to subsequent pages load fas
 
 This plugin builds heavily on the amazing work done by [Google Chrome Labs](https://github.com/GoogleChromeLabs/quicklink).
 
+If you are a developer, we encourage you to follow along or [contribute](https://github.com/luehrsenheinrich/wp-quicklink) to the development of this plugin [on GitHub](https://github.com/luehrsenheinrich/wp-quicklink).
+
 == Installation ==
 
 #### From within WordPress
