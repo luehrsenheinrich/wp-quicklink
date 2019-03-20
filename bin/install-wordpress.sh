@@ -42,14 +42,22 @@ if ! $(${WP_CLI} core is-installed); then
 	${WP_CLI} plugin activate quicklink
 
 	# Import and activate needed plugins
-	${WP_CLI} plugin install wordpress-importer query-monitor debug-bar amp pwa --activate
+	${WP_CLI} plugin install wordpress-importer query-monitor debug-bar amp pwa woocommerce --activate
 	${WP_CLI} plugin install gutenberg
+
+	${WP_CLI} theme install storefront
 
 	echo $(status_message "Downloading WordPress theme unit test data...")
 	${WP_CLI} curl -O https://raw.githubusercontent.com/WPTRT/theme-unit-test/master/themeunittestdata.wordpress.xml >/dev/null 2>&1
 
 	echo $(status_message "Importing WordPress theme unit test data...\n")
 	${WP_CLI} import themeunittestdata.wordpress.xml --authors=create
+
+	echo $(status_message "Downloading WooCommerce theme unit test data...")
+	${WP_CLI} curl -O https://raw.githubusercontent.com/woocommerce/woocommerce/master/sample-data/sample_products.xml >/dev/null 2>&1
+
+	echo $(status_message "Importing WooCommerce theme unit test data...\n")
+	${WP_CLI} import sample_products.xml --authors=create
 
 	# Activate debugging
 	${WP_CLI} config set WP_DEBUG true --raw
