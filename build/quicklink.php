@@ -117,3 +117,15 @@ function quicklink_add_async_attr_to_script_loader_tag( $tag, $handle ) {
 	return $tag;
 }
 add_filter( 'script_loader_tag', 'quicklink_add_async_attr_to_script_loader_tag', 10, 2 );
+
+/**
+ * Add some plugin compatibility files when everything is ready.
+ *
+ * @return void
+ */
+function plugin_compatibility_files() {
+	if ( class_exists( 'WooCommerce' ) ) {
+		require_once QUICKLINK_PATH . '/plugin-compatibility/woocommerce.php';
+	}
+}
+add_action( 'init', 'plugin_compatibility_files' );
