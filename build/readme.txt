@@ -34,6 +34,9 @@ If you are a developer, we encourage you to follow along or [contribute](https:/
 
 == Changelog ==
 
+= Unreleased =
+* Added rules for WooCommerce
+
 = 0.4.0 =
 * Updated the script loading to load asynchronously
 * Updated the plugin assets
