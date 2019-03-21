@@ -5,6 +5,5 @@
   },
 	"scripts": {
 		"afterBump": "npx grunt release",
-		"afterRelease": "npm run release-wp"
 	}
 }
