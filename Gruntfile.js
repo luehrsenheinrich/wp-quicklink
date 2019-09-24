@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 			options: {
 			  map: false, // inline sourcemaps
 			  processors: [
-				require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+					require('autoprefixer')(), // add vendor prefixes
 			  ]
 			},
 			files: {

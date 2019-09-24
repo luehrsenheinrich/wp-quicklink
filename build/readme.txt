@@ -21,18 +21,21 @@ If you are a developer, we encourage you to follow along or [contribute](https:/
 
 == Installation ==
 
-#### From within WordPress
+= From within WordPress =
 
 1. Visit 'Plugins > Add New'
 1. Search for 'Quicklink for WordPress'
 1. Activate Quicklink for WordPress from your Plugins page.
 
-#### Manually
+= Manually =
 
 1. Upload the `quicklink` folder to the `/wp-content/plugins/` directory
 1. Activate the Quicklink for WordPress plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 0.6.0 =
+* Updated Quicklink to version 1.0.1
 
 = 0.5.0 =
 * Added rules and compatibility for WooCommerce
