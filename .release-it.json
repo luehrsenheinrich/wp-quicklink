@@ -3,7 +3,7 @@
     "release": true,
     "assets": "update/*.zip"
   },
-	"scripts": {
-		"afterBump": "npx grunt release",
+	"hooks": {
+		"after:bump": "npx grunt release"
 	}
 }

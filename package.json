@@ -42,7 +42,7 @@
   "scripts": {
     "setup": "sh bin/setup-local-env.sh",
     "remove": "docker-compose down --volumes --remove-orphans",
-    "release": "env-cmd .env release-it",
+    "release": "env-cmd release-it",
     "webpack": "webpack",
     "dev": "sh bin/setup-local-env.sh && grunt watch",
     "release-wp": "sh bin/wp-repo-release.sh update/quicklink.zip quicklink",
