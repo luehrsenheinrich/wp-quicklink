@@ -17,6 +17,13 @@ Quicklink for WordPress attempts to make navigation to subsequent pages load fas
 
 This plugin builds heavily on the amazing work done by [Google Chrome Labs](https://github.com/GoogleChromeLabs/quicklink).
 
+= How it works =
+
+* **Detects links within the viewport** (using [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API))
+* **Waits until the browser is idle** (using [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback))
+* **Checks if the user isn't on a slow connection** (using `navigator.connection.effectiveType`) or has data-saver enabled (using `navigator.connection.saveData`)
+* **Prefetches URLs to the links** (using [`<link rel=prefetch>`](https://www.w3.org/TR/resource-hints/#prefetch) or XHR). Provides some control over the request priority (can switch to `fetch()` if supported).
+
 If you are a developer, we encourage you to follow along or [contribute](https://github.com/luehrsenheinrich/wp-quicklink) to the development of this plugin [on GitHub](https://github.com/luehrsenheinrich/wp-quicklink).
 
 == Installation ==
@@ -31,6 +38,17 @@ If you are a developer, we encourage you to follow along or [contribute](https:/
 
 1. Upload the `quicklink` folder to the `/wp-content/plugins/` directory
 1. Activate the Quicklink for WordPress plugin through the 'Plugins' menu in WordPress
+
+== Frequently Asked Questions ==
+
+= Will this make my website faster? =
+Yes and no. This plugin has no impact on the actual performance of your website. But navigating the website will feel faster, because potential navigation targets of the user have been prefetched in the users browser.
+
+= Will this make my website slower? =
+Slowing down the site is highly unlikely, but possible. If this plugin is used with a caching plugin, the additional hits on the server should not impact performance. But if resource intensive, uncached targets are being prefetched, a performance loss is to be expected.
+
+= What can I do if my website is getting slower? =
+You should fist check, that a good caching plugin like "WP Super Cache", "W3 Total Cache" or "WP Rocket" is enabled. If this is not enough you can always add exception rules to the Quicklink configuration by modifying the 'quicklink_options' filter.
 
 == Changelog ==
 
