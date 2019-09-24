@@ -5,5 +5,8 @@
   },
 	"hooks": {
 		"after:bump": "npx grunt release"
+	},
+	"npm": {
+		"publish": false
 	}
 }
