@@ -26,9 +26,6 @@ function quicklink_woocommerce_compatibility( $options ) {
 		return $options;
 	}
 
-	// Do not preload 'add to cart' links.
-	$wc_ignores[] = preg_quote( 'add-to-cart=', '/' );
-
 	// Do not preload the 'my account' page, as it is usually ressource heavy.
 	$myaccount_page_id = get_option( 'woocommerce_myaccount_page_id' );
 	if ( $myaccount_page_id ) {
@@ -36,14 +33,14 @@ function quicklink_woocommerce_compatibility( $options ) {
 	}
 
 	// Do not preload the cart, as it is usally ressource heavy.
-	$wc_ignores[] = '^' . preg_quote( $woocommerce->cart->get_cart_url(), '/' );
+	$wc_ignores[] = '^' . preg_quote( wc_get_cart_url(), '/' );
 
 	// Do not preload the checkout url for the same reason as above.
-	$wc_ignores[] = '^' . preg_quote( $woocommerce->cart->get_checkout_url(), '/' );
+	$wc_ignores[] = '^' . preg_quote( wc_get_checkout_url(), '/' );
 
 	// Do not preload the 'Payment' page, as it is usually ressource heavy.
-	if ( woocommerce_get_page_id( 'pay' ) ) {
-		$wc_ignores[] = '^' . preg_quote( get_permalink( woocommerce_get_page_id( 'pay' ) ), '/' );
+	if ( wc_get_page_id( 'pay' ) ) {
+		$wc_ignores[] = '^' . preg_quote( get_permalink( wc_get_page_id( 'pay' ) ), '/' );
 	}
 
 	// Remove possible empty strings and duplicates from the array.
