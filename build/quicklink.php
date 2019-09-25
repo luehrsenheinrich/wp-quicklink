@@ -73,7 +73,7 @@ function quicklink_enqueue_scripts() {
 			preg_quote( wp_parse_url( content_url(), PHP_URL_PATH ), '/' ),
 
 			// Do not preload links with get parameters.
-			'.*\?((.*=.*)(&?))+',
+			'.*\?.+',
 		),
 	);
 
