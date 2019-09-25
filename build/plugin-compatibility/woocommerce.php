@@ -33,10 +33,10 @@ function quicklink_woocommerce_compatibility( $options ) {
 	}
 
 	// Do not preload the cart, as it is usally ressource heavy.
-	$wc_ignores[] = '^' . preg_quote( get_cart_url(), '/' );
+	$wc_ignores[] = '^' . preg_quote( wc_get_cart_url(), '/' );
 
 	// Do not preload the checkout url for the same reason as above.
-	$wc_ignores[] = '^' . preg_quote( get_checkout_url(), '/' );
+	$wc_ignores[] = '^' . preg_quote( wc_get_checkout_url(), '/' );
 
 	// Do not preload the 'Payment' page, as it is usually ressource heavy.
 	if ( wc_get_page_id( 'pay' ) ) {
