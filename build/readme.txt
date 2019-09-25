@@ -52,6 +52,10 @@ You should fist check, that a good caching plugin like "WP Super Cache", "W3 Tot
 
 == Changelog ==
 
+= 0.7.0 =
+* Changed the defaults to ignore links with get requests to improve compatibility
+* Removed some deprecated functions for WooCommerce
+
 = 0.6.0 =
 * Updated Quicklink to version 1.0.1
 
