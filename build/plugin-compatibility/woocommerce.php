@@ -26,12 +26,6 @@ function quicklink_woocommerce_compatibility( $options ) {
 		return $options;
 	}
 
-	// Do not preload 'add to cart' links.
-	$wc_ignores[] = preg_quote( 'add-to-cart=', '/' );
-
-	// Do not preload 'add to wishlist' links.
-	$wc_ignores[] = preg_quote( 'add_to_wishlist=', '/' );
-
 	// Do not preload the 'my account' page, as it is usually ressource heavy.
 	$myaccount_page_id = get_option( 'woocommerce_myaccount_page_id' );
 	if ( $myaccount_page_id ) {
