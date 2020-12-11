@@ -16,6 +16,7 @@ cache:
     - $HOME/.nvm/.cache
 
 install:
+  - composer self-update --1
   - composer install
   - npm install
 
