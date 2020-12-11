@@ -52,6 +52,9 @@ You should fist check, that a good caching plugin like "WP Super Cache", "W3 Tot
 
 == Changelog ==
 
+= 0.7.2 =
+* Made a function have a less generic name
+
 = 0.7.1 =
 * Fix some more deprecations with WooCommerce
 
