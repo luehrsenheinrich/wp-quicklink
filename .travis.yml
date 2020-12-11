@@ -4,6 +4,7 @@ language: php
 php:
   - 7
 
+# We only want builds on the master branch.
 branches:
   only:
     - master
