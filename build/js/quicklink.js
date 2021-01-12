@@ -1,4 +1,4 @@
-import quicklink from 'quicklink/dist/quicklink.mjs';
+import { listen } from 'quicklink';
 
 window.addEventListener( 'load', () => {
 	const exportedOptions = window.quicklinkOptions || {};
@@ -45,5 +45,5 @@ window.addEventListener( 'load', () => {
 		} );
 	}
 
-	quicklink( options );
+	listen( options );
 } );
