@@ -16,7 +16,7 @@ window.addEventListener( 'load', () => {
 	}
 
 	// limit: Verify we actually get an int.
-	if ( 'number' === typeof exportedOptions.limit ) {
+	if ( 'number' === typeof exportedOptions.limit && exportedOptions.limit > 0 ) {
 		listenerOptions.limit = exportedOptions.limit;
 	}
 
