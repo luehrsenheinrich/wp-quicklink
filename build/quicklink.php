@@ -80,6 +80,7 @@ function quicklink_enqueue_scripts() {
 	/**
 	 * Filters Quicklink options.
 	 *
+	 * @link https://getquick.link/api/
 	 * @param array {
 	 *     Configuration options for Quicklink.
 	 *
@@ -87,10 +88,11 @@ function quicklink_enqueue_scripts() {
 	 *     @param int      $limit     The total requests that can be prefetched while observing the $el container.
 	 *     @param int      $throttle  The concurrency limit for simultaneous requests while observing the $el container.
 	 *     @param int      $timeout   Timeout after which prefetching will occur.
-	 *     @param string   $timeoutFn Custom timeout function.
+	 *     @param string   $timeoutFn Custom timeout function. Must refer to a named global function in JS.
 	 *     @param bool     $priority  Attempt higher priority fetch (low or high). Default false.
 	 *     @param string[] $origins   Allowed origins to prefetch (empty allows all). Defaults to host for current home URL.
 	 *     @param string[] $ignores   Regular expression patterns to determine whether a URL is ignored. Runs after origin checks.
+	 *     @param string   $onError   Custom error handler. Must refer to a named global function in JS.
 	 *     @param string[] $urls      Array of URLs to prefetch.
 	 * }
 	 */

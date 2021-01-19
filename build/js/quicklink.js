@@ -21,12 +21,12 @@ window.addEventListener( 'load', () => {
 	}
 
 	// throttle: Verify we actually get an int.
-	if ( 'number' === typeof exportedOptions.throttle ) {
+	if ( 'number' === typeof exportedOptions.throttle && exportedOptions.throttle > 0 ) {
 		listenerOptions.throttle = exportedOptions.throttle;
 	}
 
 	// timeoutFn: Obtain function reference as opposed to function string, if it is not the default.
-	if ( 'string' === typeof exportedOptions.timeoutFn && 'requestIdleCallback' !== exportedOptions.timeoutFn ) {
+	if ( 'string' === typeof exportedOptions.timeoutFn && 'requestIdleCallback' !== exportedOptions.timeoutFn && typeof 'function' === window[ exportedOptions.timeoutFn ] ) {
 		const timeoutFn = window[ exportedOptions.timeoutFn ];
 		listenerOptions.timeoutFn = function() {
 			return timeoutFn.apply( window, arguments );
@@ -52,7 +52,6 @@ window.addEventListener( 'load', () => {
 
 	listen( listenerOptions );
 
-	// urls: Verify we don't get an empty array, as that would turn off quicklink.
 	if ( Array.isArray( exportedOptions.urls ) && 0 < exportedOptions.urls.length ) {
 		prefetch( exportedOptions.urls );
 	}
