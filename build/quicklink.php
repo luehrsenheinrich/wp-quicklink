@@ -31,7 +31,7 @@ function quicklink_enqueue_scripts() {
 		return;
 	}
 
-	wp_enqueue_script( 'quicklink', QUICKLINK_URL . 'quicklink.min.js', array(), '<##= pkg.version ##>', true );
+	wp_enqueue_script( 'quicklink' );
 
 	$options = array(
 		// CSS selector for the DOM element to observe for in-viewport links to prefetch.
@@ -136,3 +136,15 @@ function quicklink_plugin_compatibility_files() {
 	}
 }
 add_action( 'init', 'quicklink_plugin_compatibility_files' );
+
+/**
+ * Add quicklink to the default scripts to make it available earlier in the runtime.
+ *
+ * @param WP_Scripts $scripts The WP_Scripts instance.
+ *
+ * @return void
+ */
+function quicklink_to_default_scripts( $scripts ) {
+	$scripts->add( 'quicklink', QUICKLINK_URL . 'quicklink.min.js', array(), '<##= pkg.version ##>', true );
+}
+add_action( 'wp_default_scripts', 'quicklink_to_default_scripts' );
