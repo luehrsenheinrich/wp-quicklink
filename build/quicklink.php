@@ -37,7 +37,7 @@ function quicklink_enqueue_scripts() {
 		// CSS selector for the DOM element to observe for in-viewport links to prefetch.
 		'el'        => '',
 
-		// Static array of URLs to prefetch.
+		// Static array of URLs to prefetch. Deprecated since plugin version 0.8.0.
 		'urls'      => array(),
 
 		// Integer for the `requestIdleCallback` timeout. A time in milliseconds by which the browser must execute prefetching. Defaults to 2 seconds.
@@ -93,10 +93,23 @@ function quicklink_enqueue_scripts() {
 	 *     @param string[] $origins   Allowed origins to prefetch (empty allows all). Defaults to host for current home URL.
 	 *     @param string[] $ignores   Regular expression patterns to determine whether a URL is ignored. Runs after origin checks.
 	 *     @param string   $onError   Custom error handler. Must refer to a named global function in JS.
-	 *     @param string[] $urls      Array of URLs to prefetch.
+	 *     @param string[] $urls      Array of URLs to prefetch. Deprecated as of plugin version 0.8.0
 	 * }
 	 */
 	$options = apply_filters( 'quicklink_options', $options );
+
+	/**
+	 * Add a deprecation warning for the $options[urls] option.
+	 *
+	 * @since 0.8.0
+	 */
+	if ( isset( $options['urls'] ) && ! empty( $options['urls'] ) ) {
+		_deprecated_argument(
+			__FUNCTION__,
+			'0.8.0',
+			esc_attr( __( 'The "URLs" argument has been deprecated in favor of the dedicated `quicklink_prefetch` filter.', 'quicklink' ) )
+		);
+	}
 
 	wp_add_inline_script(
 		'quicklink',

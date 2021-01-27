@@ -55,6 +55,9 @@ window.addEventListener( 'load', () => {
 
 	quicklink.listen( listenerOptions );
 
+	/**
+	 * The option to prefetch urls from the options is deprecated as of version 0.8.0.
+	 */
 	if ( Array.isArray( exportedOptions.urls ) && 0 < exportedOptions.urls.length ) {
 		quicklink.prefetch( exportedOptions.urls );
 	}
