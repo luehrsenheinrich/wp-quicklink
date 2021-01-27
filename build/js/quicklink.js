@@ -1,4 +1,7 @@
-import { listen, prefetch } from 'quicklink';
+import * as quicklink from 'quicklink';
+
+// Move quicklink to the global scope
+window.quicklink = quicklink;
 
 window.addEventListener( 'load', () => {
 	const exportedOptions = window.quicklinkOptions || {};
@@ -50,9 +53,9 @@ window.addEventListener( 'load', () => {
 		} );
 	}
 
-	listen( listenerOptions );
+	quicklink.listen( listenerOptions );
 
 	if ( Array.isArray( exportedOptions.urls ) && 0 < exportedOptions.urls.length ) {
-		prefetch( exportedOptions.urls );
+		quicklink.prefetch( exportedOptions.urls );
 	}
 } );
