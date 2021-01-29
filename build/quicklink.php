@@ -107,7 +107,7 @@ function quicklink_enqueue_scripts() {
 		_deprecated_argument(
 			__FUNCTION__,
 			'0.8.0',
-			esc_attr( __( 'The "URLs" argument has been deprecated in favor of the dedicated `quicklink_prefetch` filter.', 'quicklink' ) )
+			esc_attr( __( 'The "urls" argument has been deprecated in favor of the dedicated `quicklink_prefetch()` function.', 'quicklink' ) )
 		);
 	}
 
