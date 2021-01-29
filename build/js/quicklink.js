@@ -5,7 +5,6 @@ window.quicklink = quicklink;
 
 window.addEventListener( 'load', () => {
 	const exportedOptions = window.quicklinkOptions || {};
-	const prefetchQueue = window.quicklinkPrefetch || {};
 
 	const listenerOptions = {};
 
@@ -69,14 +68,5 @@ window.addEventListener( 'load', () => {
 	 */
 	if ( Array.isArray( exportedOptions.urls ) && 0 < exportedOptions.urls.length ) {
 		quicklink.prefetch( exportedOptions.urls );
-	}
-
-	/**
-	 * Handle the prefetch queue.
-	 */
-	if ( Array.isArray( prefetchQueue ) ) {
-		for ( const { url, isPriority } of prefetchQueue ) {
-			quicklink.prefetch( url, isPriority );
-		}
 	}
 } );
