@@ -31,13 +31,13 @@ function quicklink_enqueue_scripts() {
 		return;
 	}
 
-	wp_enqueue_script( 'quicklink', QUICKLINK_URL . 'quicklink.min.js', array(), '<##= pkg.version ##>', true );
+	wp_enqueue_script( 'quicklink', '', array(), '<##= pkg.version ##>', true );
 
 	$options = array(
 		// CSS selector for the DOM element to observe for in-viewport links to prefetch.
 		'el'        => '',
 
-		// Static array of URLs to prefetch (instead of observing `document` or a DOM element links in the viewport).
+		// Static array of URLs to prefetch. Deprecated since plugin version 0.8.0.
 		'urls'      => array(),
 
 		// Integer for the `requestIdleCallback` timeout. A time in milliseconds by which the browser must execute prefetching. Defaults to 2 seconds.
@@ -80,19 +80,36 @@ function quicklink_enqueue_scripts() {
 	/**
 	 * Filters Quicklink options.
 	 *
+	 * @link https://getquick.link/api/
 	 * @param array {
 	 *     Configuration options for Quicklink.
 	 *
-	 *     @param string[] $urls      Array of URLs to prefetch (override).
-	 *     @param string   $el        CSS selector for the DOM element to prefetch in-viewport links for.
+	 *     @param string   $el        CSS selector for the DOM element to observe for in-viewport links to prefetch.
+	 *     @param int      $limit     The total requests that can be prefetched while observing the $el container.
+	 *     @param int      $throttle  The concurrency limit for simultaneous requests while observing the $el container.
+	 *     @param int      $timeout   Timeout after which prefetching will occur.
+	 *     @param string   $timeoutFn Custom timeout function. Must refer to a named global function in JS.
 	 *     @param bool     $priority  Attempt higher priority fetch (low or high). Default false.
 	 *     @param string[] $origins   Allowed origins to prefetch (empty allows all). Defaults to host for current home URL.
 	 *     @param string[] $ignores   Regular expression patterns to determine whether a URL is ignored. Runs after origin checks.
-	 *     @param int      $timeout   Timeout after which prefetching will occur.
-	 *     @param string   $timeoutFn Custom timeout function.
+	 *     @param string   $onError   Custom error handler. Must refer to a named global function in JS.
+	 *     @param string[] $urls      Array of URLs to prefetch. Deprecated as of plugin version 0.8.0
 	 * }
 	 */
 	$options = apply_filters( 'quicklink_options', $options );
+
+	/**
+	 * Add a deprecation warning for the $options[urls] option.
+	 *
+	 * @since 0.8.0
+	 */
+	if ( isset( $options['urls'] ) && ! empty( $options['urls'] ) ) {
+		_deprecated_argument(
+			__FUNCTION__,
+			'0.8.0',
+			esc_attr( __( 'The "urls" argument has been deprecated in favor of the dedicated `quicklink_prefetch()` function.', 'quicklink' ) )
+		);
+	}
 
 	wp_add_inline_script(
 		'quicklink',
@@ -132,3 +149,35 @@ function quicklink_plugin_compatibility_files() {
 	}
 }
 add_action( 'init', 'quicklink_plugin_compatibility_files' );
+
+/**
+ * Add quicklink to the default scripts to make it available earlier in the runtime.
+ *
+ * @param WP_Scripts $scripts The WP_Scripts instance.
+ *
+ * @return void
+ */
+function quicklink_to_default_scripts( $scripts ) {
+	$scripts->add( 'quicklink', QUICKLINK_URL . 'quicklink.min.js', array(), '<##= pkg.version ##>' );
+}
+add_action( 'wp_default_scripts', 'quicklink_to_default_scripts' );
+
+/**
+ * Prefetch a url with quicklink.
+ *
+ * @param  string  $url         The URL to be prefetched.
+ * @param  boolean $is_priority Whether or not the URL should be treated as high priority target.
+ *
+ * @return void
+ */
+function quicklink_prefetch( $url, $is_priority = false ) {
+	wp_add_inline_script(
+		'quicklink',
+		sprintf(
+			'window.addEventListener( "load", function() { quicklink.prefetch( %s, %s ); } );',
+			wp_json_encode( $url ),
+			wp_json_encode( $is_priority )
+		),
+		'after'
+	);
+}
