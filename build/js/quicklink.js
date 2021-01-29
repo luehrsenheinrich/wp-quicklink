@@ -38,7 +38,7 @@ window.addEventListener( 'load', () => {
 	}
 
 	// onError: Obtain function reference as opposed to function string, if it is not the default.
-	if ( 'string' === typeof exportedOptions.onError && 'requestIdleCallback' !== exportedOptions.onError && typeof 'function' === window[ exportedOptions.onError ] ) {
+	if ( 'string' === typeof exportedOptions.onError && typeof 'function' === window[ exportedOptions.onError ] ) {
 		const onError = window[ exportedOptions.onError ];
 		listenerOptions.onError = function() {
 			return onError.apply( window, arguments );
