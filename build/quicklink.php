@@ -31,7 +31,7 @@ function quicklink_enqueue_scripts() {
 		return;
 	}
 
-	wp_enqueue_script( 'quicklink' );
+	wp_enqueue_script( 'quicklink', '', array(), false, true );
 
 	$options = array(
 		// CSS selector for the DOM element to observe for in-viewport links to prefetch.
