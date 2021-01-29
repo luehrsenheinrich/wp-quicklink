@@ -31,7 +31,7 @@ function quicklink_enqueue_scripts() {
 		return;
 	}
 
-	wp_enqueue_script( 'quicklink', '', array(), false, true );
+	wp_enqueue_script( 'quicklink', '', array(), '<##= pkg.version ##>', true );
 
 	$options = array(
 		// CSS selector for the DOM element to observe for in-viewport links to prefetch.
@@ -116,27 +116,6 @@ function quicklink_enqueue_scripts() {
 		sprintf( 'var quicklinkOptions = %s;', wp_json_encode( $options ) ),
 		'before'
 	);
-
-	/**
-	 * Filters URLs to be prefetched by quicklink
-	 *
-	 * @link https://getquick.link/api/
-	 * @param array[] {
-	 *     An array of urls to be prefetched.
-	 *
-	 *     @param string $url An URL to be prefetched.
-	 *     @param bool   $isPriority Whether or not the URL should be treaded as high priority target.
-	 * }
-	 */
-	$prefetch = apply_filters( 'quicklink_prefetch', array() );
-
-	if ( is_array( $prefetch ) && ! empty( $prefetch ) ) {
-		wp_add_inline_script(
-			'quicklink',
-			sprintf( 'var quicklinkPrefetch = %s;', wp_json_encode( $prefetch ) ),
-			'before'
-		);
-	}
 }
 add_action( 'wp_enqueue_scripts', 'quicklink_enqueue_scripts' );
 
@@ -192,15 +171,13 @@ add_action( 'wp_default_scripts', 'quicklink_to_default_scripts' );
  * @return void
  */
 function quicklink_prefetch( $url, $is_priority = false ) {
-	add_filter(
-		'quicklink_prefetch',
-		function( $prefetch ) use ( $url, $is_priority ) {
-			$prefetch[] = array(
-				'url'        => $url,
-				'isPriority' => $is_priority,
-			);
-
-			return $prefetch;
-		}
+	wp_add_inline_script(
+		'quicklink',
+		sprintf(
+			'window.addEventListener( "load", function() { quicklink.prefetch( %s, %s ); } );',
+			wp_json_encode( $url ),
+			wp_json_encode( $is_priority )
+		),
+		'after'
 	);
 }
