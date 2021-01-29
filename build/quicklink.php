@@ -187,7 +187,7 @@ add_action( 'wp_default_scripts', 'quicklink_to_default_scripts' );
  * Prefetch a url with quicklink.
  *
  * @param  string  $url         The URL to be prefetched.
- * @param  boolean $is_priority Whether or not the URL should be treaded as high priority target.
+ * @param  boolean $is_priority Whether or not the URL should be treated as high priority target.
  *
  * @return void
  */
