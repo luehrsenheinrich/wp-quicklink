@@ -179,7 +179,7 @@ add_action( 'init', 'quicklink_plugin_compatibility_files' );
  * @return void
  */
 function quicklink_to_default_scripts( $scripts ) {
-	$scripts->add( 'quicklink', QUICKLINK_URL . 'quicklink.min.js', array(), '<##= pkg.version ##>', true );
+	$scripts->add( 'quicklink', QUICKLINK_URL . 'quicklink.min.js', array(), '<##= pkg.version ##>' );
 }
 add_action( 'wp_default_scripts', 'quicklink_to_default_scripts' );
 
