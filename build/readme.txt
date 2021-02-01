@@ -17,6 +17,8 @@ Quicklink for WordPress attempts to make navigation to subsequent pages load fas
 
 This plugin builds heavily on the amazing work done by [Google Chrome Labs](https://github.com/GoogleChromeLabs/quicklink).
 
+More information about [Quicklink on the official Website](https://getquick.link).
+
 = How it works =
 
 * **Detects links within the viewport** (using [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API))
@@ -51,6 +53,9 @@ Slowing down the site is highly unlikely, but possible. If this plugin is used w
 You should fist check, that a good caching plugin like "WP Super Cache", "W3 Total Cache" or "WP Rocket" is enabled. If this is not enough you can always add exception rules to the Quicklink configuration by modifying the 'quicklink_options' filter.
 
 == Changelog ==
+
+= 0.8.0 =
+* Updated Quicklink dependency to version 2.0
 
 = 0.7.3 =
 * Made a function have a less generic name
