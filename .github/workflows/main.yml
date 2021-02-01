@@ -3,7 +3,7 @@
 # It assumes that `npm install`, `composer install` and `npx grunt release` are valid commands.
 # The action expects a valid zip file in the `./update/` folder and the `slug` key in the
 # `package.json` to be set.
-name: 🏗 Build & Deploy
+name: 🏗 Build
 
 on:
   push:
