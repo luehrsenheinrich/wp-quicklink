@@ -1,5 +1,7 @@
 # Quicklink for WordPress
 
+![🏗 Build](https://github.com/luehrsenheinrich/wp-quicklink/workflows/%F0%9F%8F%97%20Build/badge.svg)
+
 Quicklink for WordPress attempts to make navigation to subsequent pages load faster. Embedded with the plugin is a javascript library, which detects links in the viewport, waits until the browser is idle and prefetches the URLs for these links. The library also tries to detect, if the user is on a slow connection or on a data plan.
 
 This plugin builds heavily on the amazing work done by [Google Chrome Labs](https://github.com/GoogleChromeLabs/quicklink).
