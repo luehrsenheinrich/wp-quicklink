@@ -33,7 +33,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
-          tools: composer:v1
+          tools: composer:v2
 
       - name: 💾 Get node.js cache directory
         id: node-cache-dir
