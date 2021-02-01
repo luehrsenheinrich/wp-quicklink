@@ -1,0 +1,67 @@
+# This workflow tests if the commit or pr meets the requirements and deploys to
+# a development server upon success.
+# It assumes that `npm install`, `composer install` and `npx grunt release` are valid commands.
+# The action expects a valid zip file in the `./update/` folder and the `slug` key in the
+# `package.json` to be set.
+name: 🏗 Build & Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.6.0
+        with:
+          access_token: ${{ github.token }}
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: ⚙️ Setup PHP with tools
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer:v2
+
+      - name: 💾 Get node.js cache directory
+        id: node-cache-dir
+        run: echo "::set-output name=dir::$(npm config get cache)" # Use $(yarn cache dir) for yarn
+
+      - name: 💾 Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.node-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # Use '**/yarn.lock' for yarn
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: 💾 Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: ⚙️ Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: ⚙️ Install Composer Packages
+        run: composer install --prefer-dist
+
+      - name: ⚙️ Install Node Packages
+        run: npm install
+
+      - name: 🏗 Build Release
+        run: npx grunt release
