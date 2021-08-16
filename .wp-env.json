@@ -1,0 +1,20 @@
+{
+	"plugins": [
+		"https://downloads.wordpress.org/plugin/wordpress-importer.zip",
+		"https://downloads.wordpress.org/plugin/query-monitor.zip",
+		"https://downloads.wordpress.org/plugin/debug-bar.zip",
+		"./trunk"
+	],
+	"mappings": {
+		"php.ini": "./php.ini"
+	},
+	"env": {
+		"development": {
+			"port": 80,
+			"config": {
+				"WP_DEBUG": true,
+				"WP_ENVIRONMENT_TYPE": "development"
+			}
+		}
+	}
+}
