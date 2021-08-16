@@ -27,7 +27,8 @@
     "grunt-webpack": "^4.0.3",
     "jit-grunt": "^0.10.0",
     "quicklink": "^2.2.0",
-    "uglifyjs-webpack-plugin": "^2.2.0"
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^5.50.0"
   },
   "scripts": {
     "setup": "npm run start",
