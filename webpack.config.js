@@ -5,7 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   entry: {
     'quicklink.min': path.resolve(__dirname, './build/js/quicklink.js'),
-
+		'quicklink.bundle': path.resolve(__dirname, './build/js/quicklink.js'),
   },
   mode: 'none',
   output: {
