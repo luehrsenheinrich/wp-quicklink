@@ -1,5 +1,4 @@
 const webpackConfig = require('./webpack.config');
-const gruntNewerLess = require('grunt-newer-less');
 
 module.exports = function(grunt) {
   require('jit-grunt')(grunt);
@@ -106,12 +105,6 @@ module.exports = function(grunt) {
 			  {src: ['**'], cwd: 'trunk', expand: true, dest: '<%= pkg.slug %>'}, // includes files in path
 			]
 		  }
-		},
-
-		newer: {
-			options: {
-				override: gruntNewerLess.overrideLess
-			}
 		}
   });
 
