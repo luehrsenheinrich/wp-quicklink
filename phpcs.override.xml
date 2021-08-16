@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress LH Override">
+	<description>The only purpose of this ruleset is to override the testVersion of other rulesets.</description>
+	<!-- Check for cross-version support for PHP 7.2 and higher. -->
+	<config name="testVersion" value="7.2-"/>
+</ruleset>

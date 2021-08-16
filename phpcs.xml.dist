@@ -4,10 +4,8 @@
 
 	<rule ref="PHPCompatibility"/>
 
-	<config name="testVersion" value="5.3-"/>
-
-	<!-- Sets the minimum supported WP version to 4.7, which is over a year old. -->
-	<config name="minimum_supported_wp_version" value="4.7" />
+	<!-- Sets the minimum supported WP version to 5.5, which is over a year old. -->
+	<config name="minimum_supported_wp_version" value="5.5" />
 
 	<rule ref="WordPress"/>
 	<rule ref="WordPress-Core"/>
@@ -42,10 +40,6 @@
 	<!-- Track our build folder -->
 	<file>./build</file>
 
-	<!-- Third party ressources -->
-	<exclude-pattern>./build/freemius</exclude-pattern>
-	<exclude-pattern>./bin-php</exclude-pattern>
-
 	<!-- Our Textdomain for i18n -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
@@ -63,4 +57,6 @@
 		<type>warning</type>
 	</rule>
 
+	<!-- Add an override ruleset to create config with higher hierachy -->
+	<rule ref="phpcs.override.xml"/>
 </ruleset>

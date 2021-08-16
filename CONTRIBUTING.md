@@ -16,7 +16,7 @@ If you want to contribute code to the theme you have to set up the environment l
 
 The working directory is the `build` directory. If you change something in another location of the git the pull request or commit will be ignored. This repository uses `@wordpress/env` to provide a local development environment. Please refer to the [documentation for wp-env](https://github.com/WordPress/gutenberg/tree/trunk/packages/env) to learn more about that package.
 
-The development server and all dependencies are handled by docker and npm. Make sure you have [docker-compose installed](https://docs.docker.com/compose/install/) and run `npm run setup` in the directory. You spawned WordPress instance will be available under `http://localhost` with the account `admin:password`.
+The development server and all dependencies are handled by docker and npm. Make sure you have [docker-compose installed](https://docs.docker.com/compose/install/) and run `npm start` in the directory. You spawned WordPress instance will be available under `http://localhost:8888` with the account `admin:password`.
 
 Please be aware, that you should usually not write code directly on the master branch.
 
