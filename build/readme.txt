@@ -33,8 +33,8 @@ If you are a developer, we encourage you to follow along or [contribute](https:/
 = From within WordPress =
 
 1. Visit 'Plugins > Add New'
-1. Search for 'Quicklink for WordPress'
-1. Activate Quicklink for WordPress from your Plugins page.
+1. Search for '<##= pkg.title ##>'
+1. Activate '<##= pkg.title ##>' from your Plugins page.
 
 = Manually =
 
