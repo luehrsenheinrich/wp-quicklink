@@ -136,3 +136,4 @@ jobs:
           ASSETS_DIR: 'assets'
           PLUGIN_DIR: 'trunk'
           VERSION: ${{ steps.version.outputs.version }}
+          SLUG: 'quicklink'
