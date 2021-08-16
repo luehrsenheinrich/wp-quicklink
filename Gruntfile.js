@@ -1,5 +1,4 @@
 const webpackConfig = require('./webpack.config');
-const gruntNewerLess = require('grunt-newer-less');
 
 module.exports = function(grunt) {
   require('jit-grunt')(grunt);
@@ -10,47 +9,6 @@ module.exports = function(grunt) {
 	pkg:	 grunt.file.readJSON("package.json"),
 	pkgLck:	 grunt.file.readJSON("package-lock.json"),
 
-	// LESS / CSS
-
-	// Compile Less
-	// Compile the less files
-	less: {
-	  development: {
-			options: {
-			  optimization: 2
-			},
-			files: {
-			  "build/admin/admin.css": "build/admin/less/admin.less", // destination file and source file
-			}
-	  },
-	},
-
-	postcss: {
-		autoprefix: {
-			options: {
-			  map: false, // inline sourcemaps
-			  processors: [
-					require('autoprefixer')(), // add vendor prefixes
-			  ]
-			},
-			files: {
-				"build/admin/admin.css": "build/admin/admin.css",
-
-			}
-		},
-		minify: {
-			options: {
-				map: false,
-				processors: [
-					require('cssnano')({}),
-				]
-			},
-			files: {
-				"build/admin/admin.min.css": "build/admin/admin.css",
-
-			}
-		}
-	},
 
 	// JAVASCRIPT
 	eslint: {
@@ -79,20 +37,6 @@ module.exports = function(grunt) {
 			options: {
 				livereload: true
 			},
-		},
-		less: {
-			files: ['build/**/*.less'], // which files to watch
-			tasks: ['deploy_css'],
-			options: {
-				//livereload: true
-			},
-		},
-		css: {
-			files: ['build/**/*.css', 'build/*.css', ],
-			tasks: [],
-			options: {
-				livereload: true
-			}
 		},
 		php: {
 			files: ['build/**/*.php'], // which files to watch
@@ -123,7 +67,6 @@ module.exports = function(grunt) {
 			return grunt.template.process(content, {delimiters: 'custom-delimiters'});
 		  },
 		},
-		build_css:  {expand: true, cwd: 'build', src: ['**/*.min.css'], dest: 'trunk/', filter: 'isFile'},
 		build_php:  {expand: true, cwd: 'build', src: ['**/*.php'], dest: 'trunk/', filter: 'isFile'},
 		build: {expand: true, cwd: 'build', src: ['**/*.min.js', '**/*.bundle.js', '**/*.min.css', '**/*.txt','**/*.svg','**/*.po','**/*.pot', '**/*.tmpl.html'], dest: 'trunk/', filter: 'isFile'},
 		build_stream: {expand: true, options: { encoding: null }, cwd: 'build', src: ['**/*.mo', 'img/**/*'], dest: 'trunk/', filter: 'isFile'},
@@ -162,17 +105,10 @@ module.exports = function(grunt) {
 			  {src: ['**'], cwd: 'trunk', expand: true, dest: '<%= pkg.slug %>'}, // includes files in path
 			]
 		  }
-		},
-
-		newer: {
-			options: {
-				override: gruntNewerLess.overrideLess
-			}
 		}
   });
 
   // These tasks are not needed at the moment, as we do not have any css or js files (yet).
-  grunt.registerTask( 'handle_css', ['less:development', 'newer:postcss:autoprefix', 'postcss:minify'] );
   grunt.registerTask( 'handle_js', ['webpack'] );
   grunt.registerTask( 'handle_php', [] );
 
@@ -182,14 +118,13 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'lint', ['lint_php', 'lint_js' ] );
 
   // Deployment strategies. The dev-deploy runs with the watcher and performs quicker. The deploy performs a clean of the trunk folder and a clean copy of the needed files.
-  grunt.registerTask( 'deploy_css', ['handle_css', 'newer:copy:build_css'] );
   grunt.registerTask( 'deploy_php', ['handle_php', 'newer:copy:build_php'] );
 
 	// A complete deploy done during initial setup
-  grunt.registerTask( 'deploy', ['handle_php', 'handle_js', 'handle_css', 'clean:build', 'copy:build', 'copy:build_css', 'copy:build_php', 'copy:build_stream'] );
+  grunt.registerTask( 'deploy', ['handle_php', 'handle_js', 'clean:build', 'copy:build', 'copy:build_php', 'copy:build_stream'] );
 
 	// A partial deploy during the watch tasks
-  grunt.registerTask( 'dev-deploy', ['handle_js', 'handle_css', 'newer:copy:build', 'newer:copy:build_stream'] );
+  grunt.registerTask( 'dev-deploy', ['handle_js', 'newer:copy:build', 'newer:copy:build_stream'] );
 
   // The release task adds a new tag in the release folder.
   grunt.registerTask( 'release', ['lint', 'deploy', 'clean:update', 'compress'] );

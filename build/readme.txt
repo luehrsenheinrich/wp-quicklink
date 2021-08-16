@@ -33,8 +33,8 @@ If you are a developer, we encourage you to follow along or [contribute](https:/
 = From within WordPress =
 
 1. Visit 'Plugins > Add New'
-1. Search for 'Quicklink for WordPress'
-1. Activate Quicklink for WordPress from your Plugins page.
+1. Search for '<##= pkg.title ##>'
+1. Activate '<##= pkg.title ##>' from your Plugins page.
 
 = Manually =
 
@@ -53,6 +53,11 @@ Slowing down the site is highly unlikely, but possible. If this plugin is used w
 You should fist check, that a good caching plugin like "WP Super Cache", "W3 Total Cache" or "WP Rocket" is enabled. If this is not enough you can always add exception rules to the Quicklink configuration by modifying the 'quicklink_options' filter.
 
 == Changelog ==
+
+= 0.9.0 =
+* General maintenance for the repository
+* Updated Quicklink dependency to version 2.2
+* Tested for WordPress 5.8
 
 = 0.8.0 =
 * Updated Quicklink dependency to version 2.0

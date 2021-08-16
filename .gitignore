@@ -21,3 +21,4 @@ update
 
 ## JS
 build/**/*.min.js
+build/**/*.bundle.js
