@@ -8,11 +8,12 @@
   "pluginUrl": "https://wordpress.org/plugins/quicklink/",
   "authorUrl": "https://www.wp-munich.com/?utm_source=wporg&utm_medium=plugin_repo&utm_campaign=description&utm_content=quicklink",
   "minWpReq": "4.9",
-  "testedWp": "5.6",
+  "testedWp": "5.8",
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@wordpress/babel-preset-default": "^4.6.0",
+    "@wordpress/env": "^4.1.0",
     "@wordpress/eslint-plugin": "^3.1.0",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
@@ -38,14 +39,14 @@
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
-    "setup": "sh bin/setup-local-env.sh",
-    "remove": "docker-compose down --volumes --remove-orphans",
-    "webpack": "webpack",
-    "dev": "sh bin/setup-local-env.sh && grunt watch",
-    "release-wp": "sh bin/wp-repo-release.sh update/quicklink.zip quicklink",
-    "eslint": "eslint"
+    "setup": "npm run start",
+    "dev": "npm run start && grunt watch",
+    "remove": "wp-env destroy",
+    "prestart": "npm install && composer install && npx grunt deploy",
+    "start": "npx wp-env start",
+    "stop": "npx wp-env stop",
+    "clean": "npx wp-env clean all"
   },
-  "dependencies": {},
   "browserslist": [
     "defaults"
   ]
