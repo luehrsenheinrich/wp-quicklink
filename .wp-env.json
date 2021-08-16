@@ -10,7 +10,6 @@
 	},
 	"env": {
 		"development": {
-			"port": 80,
 			"config": {
 				"WP_DEBUG": true,
 				"WP_ENVIRONMENT_TYPE": "development"
