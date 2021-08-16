@@ -124,3 +124,13 @@ jobs:
           asset_path: ./update/${{ steps.package.outputs.slug }}.zip
           asset_name: ${{ steps.package.outputs.slug }}-${{ steps.version.outputs.version }}.zip
           asset_content_type: application/zip
+
+
+      - name: Deploy to WordPress.org
+        uses: luehrsenheinrich/action-wordpress-plugin-deploy@develop
+        env:
+          SVN_PASSWORD: ${{ secrets.WPM_SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.WPM_SVN_USERNAME }}
+          ASSETS_DIR: 'assets'
+          PLUGIN_DIR: 'trunk'
+          VERSION: ${{ steps.version.outputs.version }}
