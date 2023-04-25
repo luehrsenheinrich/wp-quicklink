@@ -54,7 +54,7 @@ You should fist check, that a good caching plugin like "WP Super Cache", "W3 Tot
 
 == Changelog ==
 
-= Unreleased =
+= 0.10.0 =
 * General maintenance for the repository
 * Updated Quicklink dependency to version 2.3
 * Tested for WordPress 6.2
