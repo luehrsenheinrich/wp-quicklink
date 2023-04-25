@@ -7,10 +7,7 @@
 	<!-- Sets the minimum supported WP version to 5.5, which is over a year old. -->
 	<config name="minimum_supported_wp_version" value="5.5" />
 
-	<rule ref="WordPress"/>
-	<rule ref="WordPress-Core"/>
-	<rule ref="WordPress-Docs"/>
-	<rule ref="WordPress-VIP">
+	<rule ref="WordPress-Core">
 		<!--
 		OK, real talk right now. Yoda conditions are ridiculous.
 		The fundamental problem that Yoda conditions attempts to solve is:
@@ -30,7 +27,7 @@
 		-->
 		<exclude name="WordPress.PHP.YodaConditions" />
 	</rule>
-	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress-Docs"/>
 
 	<arg name="extensions" value="php"/>
 
@@ -56,6 +53,12 @@
 	<rule ref="WordPress.WP.I18n.MissingTranslatorsComment">
 		<type>warning</type>
 	</rule>
+
+	<!--
+	Prevent errors caused by WordPress Coding Standards not supporting PHP 8.0+.
+	See https://github.com/WordPress/WordPress-Coding-Standards/issues/2035
+	-->
+	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
 
 	<!-- Add an override ruleset to create config with higher hierachy -->
 	<rule ref="phpcs.override.xml"/>
