@@ -7,7 +7,7 @@
 		"wp-coding-standards/wpcs": "^1.2.0",
 		"composer/installers": "~2.2",
 		"phpcompatibility/php-compatibility": "^9.1",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0.0"
 	},
 	"scripts": {
 		"lint": "phpcs -d memory_limit=-1",
