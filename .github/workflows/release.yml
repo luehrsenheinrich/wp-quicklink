@@ -35,7 +35,7 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: 18
+          node-version: 'lts/hydrogen'
 
       - name: ⚙️ Setup PHP with tools
         uses: shivammathur/setup-php@v2
