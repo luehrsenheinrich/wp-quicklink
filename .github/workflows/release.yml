@@ -33,9 +33,9 @@ jobs:
           git config user.name $GITHUB_ACTOR
           git config user.email gh-actions-${GITHUB_ACTOR}@github.com
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 'lts/hydrogen'
 
       - name: ⚙️ Setup PHP with tools
         uses: shivammathur/setup-php@v2

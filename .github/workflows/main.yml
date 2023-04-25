@@ -25,9 +25,9 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 'lts/hydrogen'
 
       - name: ⚙️ Setup PHP with tools
         uses: shivammathur/setup-php@v2
