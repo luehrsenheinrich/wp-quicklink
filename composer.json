@@ -12,5 +12,11 @@
 	"scripts": {
 		"lint": "phpcs -d memory_limit=-1",
 		"fix": "phpcbf -d memory_limit=-1"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }
