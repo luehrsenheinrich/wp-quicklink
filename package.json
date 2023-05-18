@@ -27,7 +27,7 @@
     "grunt-webpack": "^5.0.0",
     "jit-grunt": "^0.10.0",
     "quicklink": "^2.3.0",
-    "terser-webpack-plugin": "^5.3.8",
+    "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.82.0"
   },
   "scripts": {
