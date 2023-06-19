@@ -13,7 +13,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.8",
     "@wordpress/babel-preset-default": "^7.15.0",
-    "@wordpress/env": "^6.0.0",
+    "@wordpress/env": "^8.1.1",
     "@wordpress/eslint-plugin": "^14.5.0",
     "babel-loader": "^9.1.2",
     "grunt": "^1.6.1",
