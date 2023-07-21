@@ -96,7 +96,7 @@ jobs:
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: 🏗 Build Release
-        run: npx grunt release
+        run: npm run release
 
       - name: Push the version to git
         run: |

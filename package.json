@@ -8,7 +8,7 @@
   "pluginUrl": "https://wordpress.org/plugins/quicklink/",
   "authorUrl": "https://www.wp-munich.com/?utm_source=wporg&utm_medium=plugin_repo&utm_campaign=description&utm_content=quicklink",
   "minWpReq": "4.9",
-  "testedWp": "6.2",
+  "testedWp": "6.2.2",
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.21.8",
@@ -37,7 +37,9 @@
     "prestart": "npm install && composer install && npx grunt deploy",
     "start": "npx wp-env start",
     "stop": "npx wp-env stop",
-    "clean": "npx wp-env clean all"
+    "clean": "npx wp-env clean all",
+    "updateTestedWP": "node ./bin/updateWordPressTestedVersion.js",
+    "release": "npm run updateTestedWP && npx grunt release"
   },
   "browserslist": [
     "defaults"
