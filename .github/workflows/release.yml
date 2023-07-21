@@ -79,11 +79,11 @@ jobs:
         shell: bash
         id: changelog
         run: |
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           log=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'* %s (%h)')
-          log="${log//'%'/'%25'}"
-          log="${log//$'\n'/'%0A'}"
-          log="${log//$'\r'/'%0D'}"
-          echo "::set-output name=log::$log"
+          echo "CHANGELOG<<$EOF" >> $GITHUB_ENV
+          echo "$log" >> $GITHUB_ENV
+          echo "$EOF" >> $GITHUB_ENV
 
       - name: Check Status
         run: git status
@@ -91,9 +91,9 @@ jobs:
       - name: 🔼 Bump version
         run: npm version ${{ github.event.inputs.version }} -m 'Tagging %s' -f
 
-      - name: ⚙️ Get new project version
+      - name: ⚙️ Get new version
         id: version
-        run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: 🏗 Build Release
         run: npx grunt release
@@ -113,7 +113,7 @@ jobs:
           tag_name: ${{ steps.version.outputs.version }}
           release_name: Release ${{ steps.version.outputs.version }}
           body: |
-            ${{ steps.changelog.outputs.log }}
+            ${{ env.CHANGELOG }}
           draft: false
           prerelease: false
 
