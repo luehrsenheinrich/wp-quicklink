@@ -11,7 +11,7 @@
   "testedWp": "6.2.2",
   "private": true,
   "devDependencies": {
-    "@babel/core": "^7.23.2",
+    "@babel/core": "^7.24.6",
     "@wordpress/babel-preset-default": "^7.22.0",
     "@wordpress/env": "^8.10.0",
     "@wordpress/eslint-plugin": "^18.1.0",
