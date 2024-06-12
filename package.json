@@ -28,7 +28,7 @@
     "jit-grunt": "^0.10.0",
     "quicklink": "^2.3.0",
     "terser-webpack-plugin": "^5.3.10",
-    "webpack": "^5.89.0"
+    "webpack": "^5.92.0"
   },
   "scripts": {
     "setup": "npm run start",
