@@ -18,7 +18,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: 🛑 Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.6.0
