@@ -54,7 +54,7 @@ You should fist check, that a good caching plugin like "WP Super Cache", "W3 Tot
 
 == Changelog ==
 
-= 0.10.1 =
+= 0.10.4 =
 * General maintenance for the repository
 
 = 0.10.0 =
